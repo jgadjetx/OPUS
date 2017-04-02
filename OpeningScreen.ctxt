@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=OpeningScreen
+comment1.params=
+comment1.target=OpeningScreen()
+comment2.params=container
+comment2.target=void\ addPanel(java.awt.Container)
+numComments=3
