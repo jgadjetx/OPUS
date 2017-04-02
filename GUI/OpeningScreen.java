@@ -1,3 +1,5 @@
+package GUI;
+
 
 /**
  * Write a description of class TheGui here.
@@ -46,7 +48,7 @@ public class OpeningScreen extends JFrame
         getContentPane().setBackground(Color.BLACK);
         setLayout(new BorderLayout());
         
-        ImageIcon image = new ImageIcon("logo1.png");
+        ImageIcon image = new ImageIcon("Resources//logo1.png");
         JLabel label = new JLabel("",image,JLabel.CENTER);       
         
         //Buttons        
@@ -111,8 +113,8 @@ public class OpeningScreen extends JFrame
             }
             else if(e.getSource() == btnAbout)
             {
-                 getContentPane().removeAll(); 
-                 getContentPane().repaint();
+                 //getContentPane().removeAll(); 
+                 //getContentPane().repaint();
                 
                  //AboutScreen about = new AboutScreen();    
                  //add(about.getPanel());
