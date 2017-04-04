@@ -18,6 +18,7 @@ public class START
         OpeningScreen gui = new OpeningScreen();
         gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         gui.setExtendedState(JFrame.MAXIMIZED_BOTH); 
+        //Comment
         gui.setVisible(true);
     }
     
