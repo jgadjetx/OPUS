@@ -1,4 +1,4 @@
-BlueJ run started: Wed Apr 05 01:53:35 CAT 2017
+BlueJ run started: Wed Apr 05 02:00:13 CAT 2017
 BlueJ version 4.0.1
 Java version 1.8.0_121
 Virtual machine: Java HotSpot(TM) Client VM 25.121-b13 (Oracle Corporation)
@@ -7,7 +7,7 @@ Java Home: E:\Code\BlueJ-windows-401\bluej\jdk\jre
 ----
 Detected language "english" based on iso639-2 code "eng"
 Opening project: E:\Code\School\2017\Project\OPUS\jar\checkout
-1491350016358: Listening for JDWP connection on address: javadebug
+1491350415084: Listening for JDWP connection on address: javadebug
 Connected to debug VM via dt_shmem transport...
 Communication with debug VM fully established.
 An unexpected exception occurred:
