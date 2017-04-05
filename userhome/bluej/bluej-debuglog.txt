@@ -1,4 +1,4 @@
-BlueJ run started: Wed Apr 05 02:00:13 CAT 2017
+BlueJ run started: Wed Apr 05 03:20:46 CAT 2017
 BlueJ version 4.0.1
 Java version 1.8.0_121
 Virtual machine: Java HotSpot(TM) Client VM 25.121-b13 (Oracle Corporation)
@@ -7,7 +7,7 @@ Java Home: E:\Code\BlueJ-windows-401\bluej\jdk\jre
 ----
 Detected language "english" based on iso639-2 code "eng"
 Opening project: E:\Code\School\2017\Project\OPUS\jar\checkout
-1491350415084: Listening for JDWP connection on address: javadebug
+1491355248390: Listening for JDWP connection on address: javadebug
 Connected to debug VM via dt_shmem transport...
 Communication with debug VM fully established.
 An unexpected exception occurred:
@@ -18,3 +18,6 @@ java.io.FileNotFoundException: userhome\bluej\import-cache.xml (The system canno
 	at nu.xom.Builder.build(Unknown Source)
 	at bluej.utility.ImportScanner.loadCachedImports(ImportScanner.java:472)
 	at bluej.utility.ImportScanner$1.run(ImportScanner.java:242)
+1491355268031: Listening for JDWP connection on address: javadebug
+Connected to debug VM via dt_shmem transport...
+Communication with debug VM fully established.
