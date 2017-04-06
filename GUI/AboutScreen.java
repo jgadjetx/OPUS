@@ -41,11 +41,11 @@ public class AboutScreen extends JFrame
         
         //initialize variable
         //JLabel
-        Font font = new Font("Play",Font.PLAIN,30);
+        Font font = new Font("Play",Font.BOLD,30);
         
         txtAbout = new JLabel("ABOUT");
         txtAbout.setFont(font);
-        txtAbout.setSize(100,30);
+        txtAbout.setSize(200,30);
         txtAbout.setLocation(10,10);
         
         //Button
@@ -58,15 +58,18 @@ public class AboutScreen extends JFrame
         Font font2 = new Font("Play",Font.PLAIN,15);
         txtDescription = new JLabel("OPUS is a system that allows the employment of workers at a school in a corruption free manner");
         txtDescription.setFont(font2);
-        txtDescription.setSize(800,30);
-        txtDescription.setLocation(10,65);
+        txtDescription.setSize(800,70);
+        txtDescription.setLocation(90,65);
         
-       
+        ImageIcon image = new ImageIcon("Resources//rename.png");
+        JLabel label = new JLabel("",image,JLabel.CENTER);
+        label.setSize(250,150);
+        label.setLocation(280,130);
 
         txtMeet = new JLabel("meet the team");
         txtMeet.setFont(font);
         txtMeet.setSize(300,30);
-        txtMeet.setLocation(337,210);
+        txtMeet.setLocation(300,300);
         
         //Selfies
         
@@ -74,16 +77,32 @@ public class AboutScreen extends JFrame
         JLabel picPj = new JLabel("");
         picPj.setIcon(pj);
         picPj.setSize(300,300);
-        picPj.setLocation(10,285);
+        picPj.setLocation(10,350);
         
         ImageIcon kea = new ImageIcon("Resources//kea.jpg");
         JLabel picKea = new JLabel("");
         picKea.setIcon(kea);
         picKea.setSize(300,300);
-        picKea.setLocation(562,285);
+        picKea.setLocation(562,350);
         
         ////
+        //Icons
         
+        ImageIcon pjIcon = new ImageIcon("Resources//logosComb2.png");
+        JLabel pjLogo = new JLabel("");
+        pjLogo.setIcon(pjIcon);
+        pjLogo.setSize(40,100);
+        pjLogo.setLocation(10,740);
+        
+        ImageIcon keaIcon = new ImageIcon("Resources//logosComb2.png");
+        JLabel keaLogo = new JLabel("");
+        keaLogo.setIcon(keaIcon);
+        keaLogo.setSize(40,100);
+        keaLogo.setLocation(560,740);
+        
+
+        
+        //
         pjName = new JLabel("Phumudzo Muvhango");
         pjName.setFont(font2);
         pjName.setSize(400,30);
@@ -99,57 +118,53 @@ public class AboutScreen extends JFrame
         keaName.setSize(400,30);
         keaName.setLocation(562,675);
         
-        txtKeaRoles = new JLabel("Developer . Peasant . Has A Girlfriend");
+        txtKeaRoles = new JLabel("Developer . System Analyst");
         txtKeaRoles.setFont(font2);
         txtKeaRoles.setSize(400,30);
         txtKeaRoles.setLocation(562,700);
         
         
-        //Images
-        ImagepjLinkedIn = new ImageIcon("Resources//linkedin.png");
+        // //Images
+        // ImagepjLinkedIn = new ImageIcon("Resources//linkedin.png");
         
-        ImagepjGit = new ImageIcon("Resources//github.png");
+        // ImagepjGit = new ImageIcon("Resources//github.png");
         
-        ImagepjEmail = new ImageIcon("Resources//email.png");
+        // ImagepjEmail = new ImageIcon("Resources//email.png");
         
         
         //Links
         linkPjLinked = new JLabel("<html> <a href=\"\">linkedin</a> </html>");
         linkPjLinked.setCursor(new Cursor(Cursor.HAND_CURSOR));
         linkPjLinked.addMouseListener(new  MouseHandler());
-        linkPjLinked.setSize(200,30);
-        linkPjLinked.setLocation(20,757);
+        linkPjLinked.setSize(60,30);
+        linkPjLinked.setLocation(50,745);
         
         
         linkKeaLinked = new JLabel("<html> <a href=\"\">linkedin</a> </html>");
         linkKeaLinked.setCursor(new Cursor(Cursor.HAND_CURSOR));
         linkKeaLinked.addMouseListener(new  MouseHandler());
-        linkKeaLinked.setSize(200,30);
-        linkKeaLinked.setLocation(582,757);
+        linkKeaLinked.setSize(60,30);
+        linkKeaLinked.setLocation(600,745);
         
         linkPjGit = new JLabel("<html> <a href=\"\">github</a> </html>");
         linkPjGit.setCursor(new Cursor(Cursor.HAND_CURSOR));
         linkPjGit.addMouseListener(new  MouseHandler());
-        linkPjGit.setSize(200,30);
-        linkPjGit.setLocation(20,780);
+        linkPjGit.setSize(60,30);
+        linkPjGit.setLocation(50,772);
         
         linkKeaGit = new JLabel("<html> <a href=\"\">github</a> </html>");
         linkKeaGit.setCursor(new Cursor(Cursor.HAND_CURSOR));
         linkKeaGit.addMouseListener(new  MouseHandler());
-        linkKeaGit.setSize(200,30);
-        linkKeaGit.setLocation(582,780);
+        linkKeaGit.setSize(60,30);
+        linkKeaGit.setLocation(600,772);
         
         linkPjEmail = new JLabel("pa.muvhango@gmail.com");
-        linkPjEmail.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        linkPjEmail.addMouseListener(new  MouseHandler());;
-        linkPjEmail.setSize(200,30);
-        linkPjEmail.setLocation(20,800);
+        linkPjEmail.setSize(150,30);
+        linkPjEmail.setLocation(50,805);
         
         linkKeaEmail = new JLabel("ekkonyana@gmail.com");
-        linkKeaEmail.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        linkKeaEmail.addMouseListener(new  MouseHandler());
-        linkKeaEmail.setSize(200,50);
-        linkKeaEmail.setLocation(582,790);
+        linkKeaEmail.setSize(150,30);
+        linkKeaEmail.setLocation(600,805);
         
         
         
@@ -158,11 +173,12 @@ public class AboutScreen extends JFrame
         pane.setLayout(null);
         pane.add(txtAbout);
         pane.add(txtDescription);
+        pane.add(label);
         pane.add(txtMeet);
-        
+        pane.add(keaLogo);
         pane.add(picPj);
         pane.add(picKea);
-        
+        pane.add(pjLogo);
         pane.add(pjName);
         pane.add(txtPjRoles);
         pane.add(keaName);
