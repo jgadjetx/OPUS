@@ -21,7 +21,7 @@ import java.awt.event.ActionEvent;
 import java.awt.Font;
 import java.awt.Color;
 
-public class ViewEmployees extends JFrame
+public class EmployApplicant extends JFrame
 {
     JButton btnBack,btnAddEmployee,btnRemove,btnRemove2,btnRemove3;
     JPanel panelList,panelContent;
@@ -30,32 +30,29 @@ public class ViewEmployees extends JFrame
     
     int y = 10;
     
-    public ViewEmployees()
+    public EmployApplicant()
     {
         Font heading = new Font("Play",Font.PLAIN,35);
         Font lable = new Font("Play",Font.BOLD,15);
         Font table = new Font("Play",Font.BOLD,10);
         
         //Table Format
-        String tableString = String.format("%-28s %-39s %-12s %-20s %-10s %-8s %-30s ","Name","ID Num","H.Qual","Position","Gender","Age","Drive's Lic.");
+        String tableString = String.format("%-30s %-30s %-15s %-20s %-10s %-10s ","Unique ID","Job Position","Highest Qual.","Drivers Licence","Gender","Age");
         JLabel tableHeading = new JLabel(tableString);
         tableHeading.setFont(table);
         tableHeading.setSize(700,30);
         tableHeading.setLocation(110,105);
         
-        lblViewEmployee = new JLabel("View Employees");
+        lblViewEmployee = new JLabel("Employ Applicant");
         lblViewEmployee.setFont(heading);
         lblViewEmployee.setSize(300,40);
-        lblViewEmployee.setLocation(540,50);
+        lblViewEmployee.setLocation(520,50);
         
         
         btnBack = new JButton("Back");
         btnBack.setSize(80,30);
         btnBack.setLocation(700,10);
         
-        btnAddEmployee = new JButton("Add Employee");
-        btnAddEmployee.setSize(120,30);
-        btnAddEmployee.setLocation(680,830);
               
         panelList = new JPanel(new GridLayout(10,1,50,20));
         panelList.setSize(700,700);
@@ -68,8 +65,8 @@ public class ViewEmployees extends JFrame
         //Will be generated with for loop... This is just for demo right now
         panelContent = new JPanel(new FlowLayout(FlowLayout.LEFT,10,10));
         panelContent.setBackground(Color.LIGHT_GRAY);
-        btnRemove = new JButton("Remove");
-        String staffString = String.format("%-15s %-17s %-10s %-10s %-7s %-5s %-10s ","P.Muvhango","9603054464084","Matric","Gardener","Male","21","Code 10");
+        btnRemove = new JButton("Hire");
+        String staffString = String.format("%-20s %-20s %-10s %-10s %-7s %-5s","2017225558","Gardener","Matric","Code 10","Male","21");
         JLabel staff = new JLabel(staffString);
         staff.setFont(lable);
         panelContent.add(staff);
@@ -77,8 +74,8 @@ public class ViewEmployees extends JFrame
         
         JPanel panelContent2 = new JPanel(new FlowLayout(FlowLayout.LEFT,10,10));
         panelContent2.setBackground(Color.LIGHT_GRAY);
-        btnRemove2 = new JButton("Remove");
-        String staffString2 = String.format("%-15s %-17s %-10s %-10s %-7s %-5s %-10s ","K.Konyana","9612314464084","Matric","Janitor","Male","20","Code 8");
+        btnRemove2 = new JButton("Hire");
+        String staffString2 = String.format("%-20s %-20s %-10s %-10s %-10s %-5s","2017552011","Janitor","Matric","Code 10","Male","20");
         JLabel staff2 = new JLabel(staffString2);
         staff2.setFont(lable);
         panelContent2.add(staff2);
@@ -94,7 +91,6 @@ public class ViewEmployees extends JFrame
         pane.setLayout(null);
         pane.add(lblViewEmployee);
         pane.add(btnBack);
-        pane.add(btnAddEmployee);
         pane.add(panelList);
         pane.add(tableHeading);
         
@@ -108,15 +104,9 @@ public class ViewEmployees extends JFrame
             {
                 
             }
-            else if (e.getSource() == btnAddEmployee)
-            {
-                
-            }
+
         }
     }
     
-    private void addEmployee()
-    {
-        
-    }
+ 
 }
