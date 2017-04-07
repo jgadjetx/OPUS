@@ -18,13 +18,13 @@ import java.awt.Container;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class adminOrApplicant extends JFrame
+public class AdminOrApplicant extends JFrame
 {
     private JButton btnAdmin,btnUser;
     private JLabel JloginText, JorText;
     private Container pane;
     
-    public adminOrApplicant()
+    public AdminOrApplicant()
     {
         super("Login As");
         
