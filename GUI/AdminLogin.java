@@ -35,7 +35,7 @@ public class AdminLogin extends JFrame
         labelImage.setLocation(200,80);
                 
         btnCreate = new JButton("Create Job");
-        btnCreate.setSize(90,30);
+        btnCreate.setSize(130,30);
         btnCreate.addActionListener(new ButtonHandler());
         btnCreate.setLocation(200,500); 
                 
