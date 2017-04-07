@@ -2,7 +2,7 @@ package GUI;
 
 
 /**
- * Write a description of class CreateJob here.
+ * Write a description of class CreateJob here. 
  * 
  * @author (your name) 
  * @version (a version number or a date)
@@ -84,9 +84,9 @@ public class CreateJob extends JFrame
         txtSalary.setLocation(40,550);
         
         btnSubmit = new JButton("Submit");
-        btnSubmit.addActionListener(new ButtonHandler());
+        //btnSubmit.addActionListener(new ButtonHandler());
         btnSubmit.setSize(100,30);
-        btnSubmit.setLocation(700,750);
+        btnSubmit.setLocation(660,540);
         
         //pane
         pane = getContentPane();
@@ -103,7 +103,7 @@ public class CreateJob extends JFrame
         pane.add(btnSubmit);
         
     }
-    
+     
     private class TextFieldHandler implements ActionListener 
     {
      

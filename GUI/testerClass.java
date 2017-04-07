@@ -6,7 +6,7 @@ package GUI;
  *
  * @author (your name)
  * @version (a version number or a date)
- */
+ */  
 
 import javax.swing.JFrame;
 
@@ -15,7 +15,7 @@ public class testerClass
    public static void main (String [] args)
    {
        //System.out.println("\f");
-       CreateJob gui = new CreateJob();
+       ViewProfile gui = new ViewProfile();
        gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
        gui.setSize(900,900);
        gui.setVisible(true);
