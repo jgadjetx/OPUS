@@ -113,12 +113,14 @@ public class OpeningScreen extends JFrame
             }
             else if(e.getSource() == btnAbout)
             {
-                 //getContentPane().removeAll(); 
-                 //getContentPane().repaint();
+                 getContentPane().removeAll(); 
+                 getContentPane().repaint();
                 
-                 //AboutScreen about = new AboutScreen();    
-                 //add(about.getPanel());
-                
+                 AboutScreen about = new AboutScreen();    
+                 about.setSize(900,900);
+                 about.setVisible(true);
+                 about.setLocationRelativeTo(null);
+                 
             }
             else if(e.getSource() == btnExit)
             {
@@ -126,9 +128,5 @@ public class OpeningScreen extends JFrame
             }
         }
     }
-    
-    public void addPanel(Container container)
-    {    
-        add(container);        
-    }
+   
 }

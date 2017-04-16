@@ -191,11 +191,7 @@ public class AboutScreen extends JFrame
         pane.add(linkPjEmail);
         pane.add(linkKeaEmail);
         
-        //Open Window
-        setLocationRelativeTo(null);
-        setSize(900,900);
-        setVisible(true);
-        //setUndecorated(true);
+
     }
     
     public class MouseHandler implements MouseListener
