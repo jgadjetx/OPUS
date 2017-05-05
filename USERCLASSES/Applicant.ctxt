@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=Applicant
+comment1.params=name\ surname\ govID\ race\ username\ highQual\ driverLic\ jobApplied
+comment1.target=Applicant(java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String)
+comment2.params=
+comment2.target=java.lang.String\ getUniqueCode()
+comment3.params=
+comment3.target=void\ writeToFile()
+numComments=4
