@@ -51,7 +51,6 @@ public class RegistrationScreen extends JFrame
     String topQual [] = {"Primary School","High School","Matric","University","None"};
     String drivers [] = {"Code 01","Code 02","Code 08","Code 10","Code 14","None"};
     
-    String testJob [] = {"Bus Driver"};
     
     BufferedWriter bw;
     BufferedReader br;
@@ -211,7 +210,7 @@ public class RegistrationScreen extends JFrame
         
         
         
-        comboJob = new JComboBox(testJob);//Populated by textfile with available Jobs
+        comboJob = new JComboBox(new String [] {"Bus Driver"});//Populated by textfile with available Jobs
         comboJob.setSize(400,30);
         comboJob.setLocation(340,625);
         comboJob.setSelectedIndex(-1);
@@ -258,9 +257,7 @@ public class RegistrationScreen extends JFrame
             }
             else if (e.getSource() == btnRegister)
             {
-                //Validation
-            	
-            	 
+                //Validation        	 
             	
 					try {
 						int genderNum = Integer.valueOf(txtGovID.getText().substring(6,7));
@@ -276,71 +273,85 @@ public class RegistrationScreen extends JFrame
 						String selectedMonth = info[1];
 						String selectedDay = info[2];
 						
-						
-						if(txtName.getText().length() < 1 ||  txtSurname.getText().length() < 1 ||  comboGender.getSelectedItem() == null || txtGovID.getText().length() < 1 || comboQual.getSelectedItem() == null || comboDrivers.getSelectedItem() == null ||  txtUsername.getText().length() < 1 || comboJob.getSelectedItem() == null)
-						{
-							JOptionPane.showMessageDialog(null,"Cannot append null field... Try again");
-						}
-						else if (genderNum >= 0 && genderNum <= 4 )
-						{
-							if(comboGender.getSelectedItem() != "Female")
-							{
-								JOptionPane.showMessageDialog(null,"Invalid ID number/gender combination... Try again");
-								comboGender.setSelectedIndex(-1);
-								txtGovID.setText("");							
-							}
-						}
-						else if(genderNum >= 5 && genderNum <= 9)
-						{
-							if(comboGender.getSelectedItem() != "Male")
-							{
-								JOptionPane.showMessageDialog(null,"Invalid ID number/gender combination... Try again");
-								comboGender.setSelectedIndex(-1);
-								txtGovID.setText("");							
-							}
-						}    						
-						else if(txtGovID.getText().length() != 13 )
-						{
-							JOptionPane.showMessageDialog(null,"Invalid ID number length... Try again");
-							txtGovID.setText(null);
-						}					
-						else if(!(year.equals(selectedYear)))
-						{
-							JOptionPane.showMessageDialog(null,"ID birth year and selected birth year don't match... Try again");
-							txtGovID.setText("");
-							datePicker.getJFormattedTextField().setText("");
-							
-						}
-						else if(!(month.equals(selectedMonth)))
-						{
-							JOptionPane.showMessageDialog(null,"ID birth month and selected birth month don't match... Try again");
-							txtGovID.setText("");
-							datePicker.getJFormattedTextField().setText("");
-						}
-						else if(!(day.equals(selectedDay)))
-						{
-							JOptionPane.showMessageDialog(null,"ID birth day and selected birth day don't match... Try again");
-							txtGovID.setText("");
-							datePicker.getJFormattedTextField().setText("");
-						}
-						else if(usernameExists(txtName.getText()))
+						if(usernameExists(txtUsername.getText()))
 						{
 							JOptionPane.showMessageDialog(null,"Username "+ txtUsername.getText() + " already exist, choose another one");
 							txtUsername.setText("");
-							
 						}
+						else if(txtName.getText().length() < 1 ||  txtSurname.getText().length() < 1 ||  comboGender.getSelectedItem() == null || txtGovID.getText().length() < 1 || comboQual.getSelectedItem() == null || comboDrivers.getSelectedItem() == null ||  txtUsername.getText().length() < 1 || comboJob.getSelectedItem() == null)
+						{
+							JOptionPane.showMessageDialog(null,"Cannot append null field... Try again");
+							
+							if (genderNum >= 0 && genderNum <= 4 )
+							{
+								if(!(comboGender.getSelectedItem().toString().equals("Female")))
+								{
+									JOptionPane.showMessageDialog(null,"Invalid ID number/gender combination... Try again");
+									comboGender.setSelectedIndex(-1);
+									txtGovID.setText("");							
+								}
+							}
+							else if(genderNum >= 5 && genderNum <= 9)
+							{
+								if(!(comboGender.getSelectedItem().toString().equals("Male")))
+								{
+									JOptionPane.showMessageDialog(null,"Invalid ID number/gender combination... Try again");
+									comboGender.setSelectedIndex(-1);
+									txtGovID.setText("");							
+								}
+							}  
+							else if(txtGovID.getText().length() != 13 )
+							{
+								JOptionPane.showMessageDialog(null,"Invalid ID number length... Try again");
+								txtGovID.setText("");
+																
+							}	
+							else
+							{
+								if(!(year.equals(selectedYear)))
+								{
+									JOptionPane.showMessageDialog(null,"ID birth year and selected birth year don't match... Try again");
+									txtGovID.setText("");
+									datePicker.getJFormattedTextField().setText("");
+									
+								}
+								else if(!(month.equals(selectedMonth)))
+								{
+									JOptionPane.showMessageDialog(null,"ID birth month and selected birth month don't match... Try again");
+									txtGovID.setText("");
+									datePicker.getJFormattedTextField().setText("");
+								}
+								else if(!(day.equals(selectedDay)))
+								{
+									JOptionPane.showMessageDialog(null,"ID birth day and selected birth day don't match... Try again");
+									txtGovID.setText("");
+									datePicker.getJFormattedTextField().setText("");
+								}
+								
+								
+							}
+						}					
 						else
 						{
 							//Write to file
 							bw = new BufferedWriter(new FileWriter("applicants.txt",true));
 							
-							Applicant app = new Applicant(txtName.getText(),txtSurname.getText(),txtGovID.getText(),txtUsername.getText(),comboQual.getSelectedItem().toString(),comboDrivers.getSelectedItem().toString(),comboJob.getSelectedItem().toString(),"Being Evaluated");
+							Applicant app = new Applicant(txtName.getText(),txtSurname.getText(),txtGovID.getText(),txtUsername.getText().toLowerCase(),comboQual.getSelectedItem().toString(),comboDrivers.getSelectedItem().toString(),comboJob.getSelectedItem().toString(),"Being Evaluated");
 							
 							bw.write(app.getUniqueCode() +","+ app.getJobApplied() +","+ app.getHighestQual() +","+ app.getDriverLic() +","+ app.getGender()  +","+ app.getName() +","+ app.getSurname() +","+ app.getGovID() +","+ app.getUsername() +","+ app.getStatus());
 							bw.newLine();
 							bw.close();
 							
 							JOptionPane.showMessageDialog(null,"Registration Success");
+							txtName.setText("");
+							txtSurname.setText("");
+							txtGovID.setText("");
+							txtUsername.setText("");
+							comboQual.setSelectedIndex(-1);
+							comboDrivers.setSelectedIndex(-1);
+							comboGender.setSelectedIndex(-1);
+							comboJob.setSelectedIndex(-1);
+							datePicker.getJFormattedTextField().setText("");
 						}				
 											
 					}
@@ -353,7 +364,7 @@ public class RegistrationScreen extends JFrame
         
         public boolean usernameExists(String username)
         {
-        	boolean found = false ;
+        	boolean exists = false ;
         	
         	try
 			{
@@ -366,9 +377,9 @@ public class RegistrationScreen extends JFrame
 					String [] data = lines.split(",");
 					String fileUsername = data[8];
 					
-					if(username.equals(fileUsername))
+					if(username.equalsIgnoreCase(fileUsername))
 					{
-						found = true;						
+						exists = true;						
 					}
 												
 				}
@@ -379,7 +390,7 @@ public class RegistrationScreen extends JFrame
 			}
         	
         	      	
-        	return found;
+        	return exists;
         }
     }
 }

@@ -41,23 +41,7 @@ public class Applicant extends User
         
         return code;
     }
-    
-    public void writeToFile()
-    {
-        try
-        {
-            bw = new BufferedWriter(new FileWriter("applicants.txt",true));
-            
-            bw.write(getUniqueCode() +","+ this.jobApplied +","+ this.highQual +","+ this.driverLic +","+ super.getGender() +","+ super.getAge() +","+ super.getName() +","+ super.getSurname() +","+ super.getGovID() +","+ super.getUsername());
-            bw.newLine();
-            bw.close();
-        }
-        catch(Exception err)
-        {
-            JOptionPane.showMessageDialog(null,"File Error, Contact administrator ");
-        }
-    }
-    
+        
     public String getJobApplied()
     {
     	return this.jobApplied;
