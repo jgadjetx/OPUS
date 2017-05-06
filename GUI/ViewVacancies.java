@@ -10,14 +10,20 @@ package GUI;
 
 import javax.swing.JTextArea;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
 import java.awt.Font;
 
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.awt.event.ActionEvent;
 import java.awt.Container;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
 
 
 public class ViewVacancies extends JFrame
@@ -26,6 +32,9 @@ public class ViewVacancies extends JFrame
     private JTextArea output;
     private Container pane;
     private JLabel text;
+    
+  //File Handling;
+    BufferedReader br = null;
     
     public ViewVacancies()
     {   
@@ -57,6 +66,40 @@ public class ViewVacancies extends JFrame
         pane.add(btnBack);
         pane.add(btnLogin);
         pane.add(output);
+        
+        
+        
+      ///SCREEN LOAD
+        
+        try
+        {
+        	br = new BufferedReader(new FileReader("vacancies.txt"));
+        	
+        	String line;
+        	
+        	while((line = br.readLine())!= null)
+        	{
+        		String [] info = line.split(",");
+        		
+        		String title = info[0];
+        		String desc = info[1];
+        		String salary = info[2];
+        		
+        		output.append(title);
+        		output.append("\n");
+        		output.append(desc);
+        		output.append("\n");
+        		output.append(salary);
+        		output.append("\n");
+        		output.append("\n");
+        		output.append("\n");      		
+        		
+        	}
+        }
+        catch(Exception err)
+        {
+        	JOptionPane.showMessageDialog(null,"Error occured, contact administrator");
+        }
     }  
     
     public class ButtonHandler implements ActionListener

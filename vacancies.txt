@@ -1,0 +1,3 @@
+Gardener,You will be responsible to taking care of all the plants in the school,R2500
+Cleaner,asdfasdfasdfasdfasdfihduifh,R3000
+Farmer,You need to feed the goats,R1000

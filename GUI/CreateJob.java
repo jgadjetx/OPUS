@@ -12,6 +12,9 @@ import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import javax.swing.JTextField;
+
+import USERCLASSES.Admin;
+
 import javax.swing.JTextArea;
 
 import java.awt.Font;
@@ -59,7 +62,6 @@ public class CreateJob extends JFrame
         lblTitle.setLocation(40,100);
         
         txtTitle = new JTextField(25);
-        txtTitle.addActionListener(new TextFieldHandler());
         txtTitle.setSize(200,30);
         txtTitle.setLocation(40,125);
         
@@ -69,7 +71,6 @@ public class CreateJob extends JFrame
         lblDescription.setLocation(40,230);
         
         txtDescription = new JTextArea(250,250);
-        //txtDescription.addActionListener(new TextFieldHandler());
         txtDescription.setSize(400,200);
         txtDescription.setLocation(40,260);
           
@@ -79,19 +80,17 @@ public class CreateJob extends JFrame
         lblSalary.setLocation(40,525);
         
         txtSalary = new JTextField(25);
-        txtSalary.addActionListener(new TextFieldHandler());
         txtSalary.setSize(150,30);
         txtSalary.setLocation(40,550);
         
         btnSubmit = new JButton("Submit");
-        //btnSubmit.addActionListener(new ButtonHandler());
         btnSubmit.setSize(100,30);
         btnSubmit.setLocation(660,540);
+        btnSubmit.addActionListener(new ButtonHandler());
         
         //pane
         pane = getContentPane();
         pane.setLayout(null);
-        //pane.add(labelImage); 
         pane.add(lblAdmin);
         pane.add(lblName);
         pane.add(lblTitle);
@@ -104,26 +103,6 @@ public class CreateJob extends JFrame
         
     }
      
-    private class TextFieldHandler implements ActionListener 
-    {
-     
-         public void actionPerformed( ActionEvent event )
-         {          
-             if ( event.getSource() == txtTitle )
-             {
-                
-             }
-             else if(event.getSource() == txtDescription)
-             {
-                 
-             }
-             else if(event.getSource() == txtSalary)
-             {
-                 
-             }
-         }
-      
-    }
     
      public class ButtonHandler implements ActionListener
     {
@@ -131,7 +110,14 @@ public class CreateJob extends JFrame
       {
           if(e.getSource() == btnSubmit)
           {
-            
+        	  Admin admin = new Admin();
+        	  admin.createVacancy(txtTitle.getText(),txtDescription.getText(),txtSalary.getText());  
+        	  
+        	  txtTitle.setText(null);
+        	  txtDescription.setText(null);
+        	  txtSalary.setText(null);
+        	  
+        	  
           }
       }
     }

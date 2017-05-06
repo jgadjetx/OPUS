@@ -15,15 +15,14 @@ public class User implements Accountable
     private String name;
     private String surname;
     private String govID;
-    private String race;
     private String username; 
+    private String gender;
     
-    public User(String name,String surname, String govID,String race,String username)
+    public User(String name,String surname,String govID,String username)
     {
         this.name = name;
         this.surname = surname;
         this.govID = govID;
-        this.race = race;
         this.username = username;      
     }
     
@@ -36,17 +35,12 @@ public class User implements Accountable
     {
         return this.surname;
     }
-
     
     public String getGovID()
     {
         return this.govID;
     }
     
-    public String getRace()
-    {
-        return this.race;
-    }
     
     public String getUsername()
     {

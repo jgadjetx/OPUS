@@ -10,6 +10,7 @@ package GUI;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
@@ -24,6 +25,17 @@ import java.awt.Container;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
+import java.awt.HeadlessException;
+
+import USERCLASSES.Applicant;
+
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+
+
 
 public class RegistrationScreen extends JFrame
 {
@@ -35,9 +47,16 @@ public class RegistrationScreen extends JFrame
     JDatePickerImpl datePicker;
     Container pane;
     
-    String genders [] = {"Male","Female","Transgender Male","Transgender Female","Transsexual Female","Transsexual Male","Other"};
+    String genders [] = {"Male","Female"};
     String topQual [] = {"Primary School","High School","Matric","University","None"};
     String drivers [] = {"Code 01","Code 02","Code 08","Code 10","Code 14","None"};
+    
+    String testJob [] = {"Bus Driver"};
+    
+    BufferedWriter bw;
+    BufferedReader br;
+    
+    
     
     public RegistrationScreen()
     {
@@ -51,11 +70,13 @@ public class RegistrationScreen extends JFrame
         btnBack = new JButton("Back");
         btnBack.setSize(100,30);
         btnBack.setLocation(750,30);
+        btnBack.addActionListener(new ButtonHandler());
         
         
         btnRegister = new JButton("Register");
         btnRegister.setSize(500,30);
         btnRegister.setLocation(190,800);
+        btnRegister.addActionListener(new ButtonHandler());
         
         // Labels
         lblHeading = new JLabel("Applicant Registration");
@@ -190,7 +211,7 @@ public class RegistrationScreen extends JFrame
         
         
         
-        comboJob = new JComboBox();//Populated by textfile with available Jobs
+        comboJob = new JComboBox(testJob);//Populated by textfile with available Jobs
         comboJob.setSize(400,30);
         comboJob.setLocation(340,625);
         comboJob.setSelectedIndex(-1);
@@ -222,6 +243,9 @@ public class RegistrationScreen extends JFrame
         pane.add(txtUsername);
         pane.add(comboDrivers);
         pane.add(comboJob);
+        
+        
+        
     }
     
     public class ButtonHandler implements ActionListener
@@ -234,8 +258,128 @@ public class RegistrationScreen extends JFrame
             }
             else if (e.getSource() == btnRegister)
             {
-                //even here do something
+                //Validation
+            	
+            	 
+            	
+					try {
+						int genderNum = Integer.valueOf(txtGovID.getText().substring(6,7));
+						
+						String year = txtGovID.getText().substring(0,2);;
+						String month = txtGovID.getText().substring(2,4);
+						String day = txtGovID.getText().substring(4,6);
+						
+						String selectedDOB = datePicker.getJFormattedTextField().getText();
+						String [] info = selectedDOB.split("-");
+						
+						String selectedYear = info[0].substring(2,4);
+						String selectedMonth = info[1];
+						String selectedDay = info[2];
+						
+						
+						if(txtName.getText().length() < 1 ||  txtSurname.getText().length() < 1 ||  comboGender.getSelectedItem() == null || txtGovID.getText().length() < 1 || comboQual.getSelectedItem() == null || comboDrivers.getSelectedItem() == null ||  txtUsername.getText().length() < 1 || comboJob.getSelectedItem() == null)
+						{
+							JOptionPane.showMessageDialog(null,"Cannot append null field... Try again");
+						}
+						else if (genderNum >= 0 && genderNum <= 4 )
+						{
+							if(comboGender.getSelectedItem() != "Female")
+							{
+								JOptionPane.showMessageDialog(null,"Invalid ID number/gender combination... Try again");
+								comboGender.setSelectedIndex(-1);
+								txtGovID.setText("");							
+							}
+						}
+						else if(genderNum >= 5 && genderNum <= 9)
+						{
+							if(comboGender.getSelectedItem() != "Male")
+							{
+								JOptionPane.showMessageDialog(null,"Invalid ID number/gender combination... Try again");
+								comboGender.setSelectedIndex(-1);
+								txtGovID.setText("");							
+							}
+						}    						
+						else if(txtGovID.getText().length() != 13 )
+						{
+							JOptionPane.showMessageDialog(null,"Invalid ID number length... Try again");
+							txtGovID.setText(null);
+						}					
+						else if(!(year.equals(selectedYear)))
+						{
+							JOptionPane.showMessageDialog(null,"ID birth year and selected birth year don't match... Try again");
+							txtGovID.setText("");
+							datePicker.getJFormattedTextField().setText("");
+							
+						}
+						else if(!(month.equals(selectedMonth)))
+						{
+							JOptionPane.showMessageDialog(null,"ID birth month and selected birth month don't match... Try again");
+							txtGovID.setText("");
+							datePicker.getJFormattedTextField().setText("");
+						}
+						else if(!(day.equals(selectedDay)))
+						{
+							JOptionPane.showMessageDialog(null,"ID birth day and selected birth day don't match... Try again");
+							txtGovID.setText("");
+							datePicker.getJFormattedTextField().setText("");
+						}
+						else if(usernameExists(txtName.getText()))
+						{
+							JOptionPane.showMessageDialog(null,"Username "+ txtUsername.getText() + " already exist, choose another one");
+							txtUsername.setText("");
+							
+						}
+						else
+						{
+							//Write to file
+							bw = new BufferedWriter(new FileWriter("applicants.txt",true));
+							
+							Applicant app = new Applicant(txtName.getText(),txtSurname.getText(),txtGovID.getText(),txtUsername.getText(),comboQual.getSelectedItem().toString(),comboDrivers.getSelectedItem().toString(),comboJob.getSelectedItem().toString(),"Being Evaluated");
+							
+							bw.write(app.getUniqueCode() +","+ app.getJobApplied() +","+ app.getHighestQual() +","+ app.getDriverLic() +","+ app.getGender()  +","+ app.getName() +","+ app.getSurname() +","+ app.getGovID() +","+ app.getUsername() +","+ app.getStatus());
+							bw.newLine();
+							bw.close();
+							
+							JOptionPane.showMessageDialog(null,"Registration Success");
+						}				
+											
+					}
+					catch (Exception e1) 
+					{
+						JOptionPane.showMessageDialog(null,"Oops...An error occured ");
+					}         	         	
             }
+        }
+        
+        public boolean usernameExists(String username)
+        {
+        	boolean found = false ;
+        	
+        	try
+			{
+				br = new BufferedReader(new FileReader("applicants.txt"));
+				
+				String lines = null;
+				
+				while((lines = br.readLine())!= null)
+				{
+					String [] data = lines.split(",");
+					String fileUsername = data[8];
+					
+					if(username.equals(fileUsername))
+					{
+						found = true;						
+					}
+												
+				}
+			}
+			catch(Exception err)
+			{
+				JOptionPane.showMessageDialog(null,"applicants.txt file not found : " + err);
+			}
+        	
+        	      	
+        	return found;
         }
     }
 }
