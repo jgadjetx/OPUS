@@ -1,6 +1,2 @@
-2017-64317,Bus Driver,Matric,Code 10,Male,Phumudzo,Muvhango,9603055465084,dfasdfa,Being Evaluated
-2017-87463,Bus Driver,Matric,Code 08,Male,Luke,Coetzee,9603055465084,kool,Being Evaluated
-2017-30795,Bus Driver,Matric,Code 08,Male,Mali,Coetzee,9603055465084,zeeman,Being Evaluated
-2017-16552,Bus Driver,High School,Code 08,Male,James,White,9603055465084,james,Being Evaluated
-2017-65388,Bus Driver,High School,Code 02,Female,Portia,Likey,7406030672085,lola,Being Evaluated
-2017-11147,Bus Driver,Matric,Code 08,Male,Phumudzo,Muvhango,9603055465084,killme,Being Evaluated
+2017-95566,Bus Driver,High School,Code 10,Male,James,Lebron,9603055465084,james,Being Evaluated
+2017-90627,Bus Driver,High School,Code 14,Male,Simba,Chips,9603055465084,roar,Being Evaluated

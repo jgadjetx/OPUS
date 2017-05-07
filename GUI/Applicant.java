@@ -10,6 +10,7 @@ package GUI;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import javax.swing.JTextField;
@@ -19,6 +20,8 @@ import java.awt.Font;
 import java.awt.Container;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
+import USERCLASSES.CommonMethods;
 
 public class Applicant extends JFrame
 {
@@ -40,20 +43,19 @@ public class Applicant extends JFrame
         labelImage.setLocation(200,80);
                 
         //adding label for user name
-        usernameLabel = new JLabel("UserName : ");  
+        usernameLabel = new JLabel("Username : ");  
         usernameLabel.setSize(100,30);
         usernameLabel.setFont(font);
         usernameLabel.setLocation(330,480);
         
         txtUsername = new JTextField(15);
-        txtUsername.addActionListener(new TextFieldHandler());
         txtUsername.setSize(160,30);
         txtUsername.setLocation(430,480);
                 
         btnLogin = new JButton("Login");
         btnLogin.addActionListener(new ButtonHandler());
-        btnLogin.setSize(90,30);
-        btnLogin.setLocation(400,540);
+        btnLogin.setSize(250,30);
+        btnLogin.setLocation(335,540);
         
         //pane
         pane = getContentPane();
@@ -64,15 +66,6 @@ public class Applicant extends JFrame
         pane.add(btnLogin);
     }
     
-    private class TextFieldHandler implements ActionListener 
-   {
-      
-      public void actionPerformed( ActionEvent event )
-      {
-          
-      }
-      
-   }
     
     public class ButtonHandler implements ActionListener
    {
@@ -80,8 +73,26 @@ public class Applicant extends JFrame
       {
            if(e.getSource() == btnLogin)
            {
+               CommonMethods common = new CommonMethods();
                
+               if(common.usernameExists(txtUsername.getText()))
+               {
+            	   //Do Something
+            	   ViewProfile view = new ViewProfile(txtUsername.getText().toLowerCase());
+            	   view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                   view.setSize(900,900);
+                   view.setVisible(true);
+                   view.setResizable(false);
+                   view.setLocationRelativeTo(null);
+                   dispose();
+               }
+               else
+               {
+            	   JOptionPane.showMessageDialog(null,"This Account Doesn't Exist...Please Register");
+            	   txtUsername.setText("");
+            	   
+               }          		   
            }
-       }
+       }   
    }
 }

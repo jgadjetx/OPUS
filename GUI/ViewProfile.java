@@ -11,6 +11,7 @@ package GUI;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import javax.swing.JTextField;
@@ -22,14 +23,33 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Container;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+
 public class ViewProfile extends JFrame
 {
-    private JLabel lblUser,lblDetail,lblApplicantProfile,lblID,lblFirstName,lblSurname,lblEthnicGroup,lblGender,lblDOB,lblDrivers,lblQualification,lblJob,lblUserName,lblStatus;
-    private JTextField txtID,txtFirstName,txtSurname,txtEthnicGroup,txtGender,txtDOB,txtDrivers,txtQualification,txtJob,txtUserName,txtStatus;
+    private JLabel lblUser,lblDetail,lblApplicantProfile,lblID,lblFirstName,lblSurname,lblGender,lblDOB,lblDrivers,lblQualification,lblJob,lblUserName,lblStatus;
+    private JTextField txtID,txtFirstName,txtSurname,txtGender,txtDOB,txtDrivers,txtQualification,txtJob,txtUserName,txtStatus;
     private JButton btnLogout;
     private Container pane;
     
-    public ViewProfile()
+    BufferedReader br;
+    
+    //Info
+    String jobAppled;
+    String higestQ;
+    String driversLic;
+    String gender;
+	String name;
+	String surname;
+	String id;
+	String status;
+	String birtdate;
+	String year;
+	String month;
+	String day;
+    
+    public ViewProfile(String username)
     {
         super("View Profile");
         
@@ -45,10 +65,10 @@ public class ViewProfile extends JFrame
         lblUser.setSize(200,40);
         lblUser.setLocation(650,75);
         
-        lblDetail = new JLabel("Number 1 - Peasent :D");
+        lblDetail = new JLabel("Name and Surname");
         lblDetail.setFont(logged); 
         lblDetail.setSize(170,40);
-        lblDetail.setLocation(635,125);
+        lblDetail.setLocation(635,110);
         
         lblApplicantProfile = new JLabel("Applicant Profile :");
         lblApplicantProfile.setFont(heading);
@@ -70,11 +90,6 @@ public class ViewProfile extends JFrame
         lblSurname.setSize(155,30);
         lblSurname.setLocation(70,275);
                 
-        lblEthnicGroup = new JLabel("Ethnic Group :");
-        lblEthnicGroup.setFont(sub);
-        lblEthnicGroup.setSize(155,30);
-        lblEthnicGroup.setLocation(70,325);
-        
         lblGender = new JLabel("Gender :");
         lblGender.setFont(sub);
         lblGender.setSize(155,30);
@@ -94,16 +109,16 @@ public class ViewProfile extends JFrame
         lblQualification.setFont(sub);
         lblQualification.setSize(155,30);
         lblQualification.setLocation(70,525);
+     
+        lblUserName = new JLabel("Username :");
+        lblUserName.setFont(sub);
+        lblUserName.setSize(155,30);
+        lblUserName.setLocation(70,575);
         
         lblJob = new JLabel("Job Applied For :");
         lblJob .setFont(sub);
         lblJob .setSize(155,30);
-        lblJob .setLocation(70,575);
-        
-        lblUserName = new JLabel("Username :");
-        lblUserName.setFont(sub);
-        lblUserName.setSize(155,30);
-        lblUserName.setLocation(70,625);
+        lblJob .setLocation(70,625);
         
         lblStatus = new JLabel("Status :");
         lblStatus.setFont(heading);
@@ -113,59 +128,54 @@ public class ViewProfile extends JFrame
         
         //TextFields
         txtID = new JTextField(25);
-        txtID.addActionListener(new TextFieldHandler());
         txtID.setSize(200,30);
         txtID.setLocation(210,175);
+        txtID.setEditable(false);
         
         txtFirstName = new JTextField(25);
-        txtFirstName.addActionListener(new TextFieldHandler());
         txtFirstName.setSize(200,30);
         txtFirstName.setLocation(210,225);
+        txtFirstName.setEditable(false);
         
         txtSurname = new JTextField(25);
-        txtSurname.addActionListener(new TextFieldHandler());
         txtSurname.setSize(200,30);
         txtSurname.setLocation(210,275);
-        
-        txtEthnicGroup = new JTextField(25);
-        txtEthnicGroup.addActionListener(new TextFieldHandler());
-        txtEthnicGroup.setSize(200,30);
-        txtEthnicGroup.setLocation(210,325);
+        txtSurname.setEditable(false);
         
         txtGender = new JTextField(25);
-        txtGender.addActionListener(new TextFieldHandler());
         txtGender.setSize(200,30);
         txtGender.setLocation(210,375);
+        txtGender.setEditable(false);
         
         txtDOB = new JTextField(25);
-        txtDOB.addActionListener(new TextFieldHandler());
         txtDOB.setSize(200,30);
         txtDOB.setLocation(210,425);
+        txtDOB.setEditable(false);
         
         txtDrivers = new JTextField(25);
-        txtDrivers.addActionListener(new TextFieldHandler());
         txtDrivers.setSize(200,30);
         txtDrivers.setLocation(210,475);
+        txtDrivers.setEditable(false);
         
         txtQualification = new JTextField(25);
-        txtQualification.addActionListener(new TextFieldHandler());
         txtQualification.setSize(200,30);
         txtQualification.setLocation(210,525);
-        
-        txtJob = new JTextField(25);
-        txtJob.addActionListener(new TextFieldHandler());
-        txtJob.setSize(200,30);
-        txtJob.setLocation(210,575);
+        txtQualification.setEditable(false);
         
         txtUserName = new JTextField(25);
-        txtUserName.addActionListener(new TextFieldHandler());
         txtUserName.setSize(200,30);
-        txtUserName.setLocation(210,625);
+        txtUserName.setLocation(210,575);
+        txtUserName.setEditable(false);
+        
+        txtJob = new JTextField(25);
+        txtJob.setSize(200,30);
+        txtJob.setLocation(210,625);
+        txtJob.setEditable(false);
         
         txtStatus = new JTextField(25);
-        txtStatus.addActionListener(new TextFieldHandler());
         txtStatus.setSize(200,30);
-        txtStatus.setLocation(200,686);
+        txtStatus.setLocation(210,686);
+        txtStatus.setEditable(false);
         
         
         //Button 
@@ -173,6 +183,7 @@ public class ViewProfile extends JFrame
         btnLogout.addActionListener(new ButtonHandler());
         btnLogout.setSize(100,30);
         btnLogout.setLocation(650,680);
+        btnLogout.addActionListener(new ButtonHandler());
         
         
         //Pane
@@ -187,8 +198,6 @@ public class ViewProfile extends JFrame
         pane.add(txtFirstName);
         pane.add(lblSurname);
         pane.add(txtSurname);
-        pane.add(lblEthnicGroup);
-        pane.add(txtEthnicGroup);
         pane.add(lblGender);
         pane.add(txtGender);
         pane.add(lblDOB);
@@ -206,28 +215,58 @@ public class ViewProfile extends JFrame
         pane.add(txtStatus); 
         pane.add(btnLogout);
         
+        
+        ///Load
+        try
+        {
+        	br = new BufferedReader(new FileReader("applicants.txt"));
+        	
+        	String line = null;
+        	
+        	while((line = br.readLine()) != null)
+        	{
+        		String [] info = line.split(",");
+        		
+        		if(info[8].equals(username))
+        		{
+        			jobAppled = info[1];
+        			higestQ = info[2];
+        			driversLic = info[3];
+        			gender = info[4];
+        			name = info[5];
+        			surname = info[6];
+        			id = info[7];
+        			status = info[9];              	
+                	
+                	birtdate = id.substring(0,5);
+                	year = "19" + birtdate.substring(0,2)+"-";
+                	month = id.substring(2,4)+"-";
+                	day = id.substring(4,6);          
+                	
+                	txtID.setText(id);
+                	txtFirstName.setText(name);
+                	txtSurname.setText(surname);
+                	txtGender.setText(gender);
+                	txtDOB.setText(year+month+day);
+                	txtDrivers.setText(driversLic);
+                	txtQualification.setText(higestQ);
+                	txtJob.setText(jobAppled);
+                	txtUserName.setText(username);
+                	txtStatus.setText(status);                  	
+                	lblDetail.setText(name+" "+surname);     
+        		}
+        				     
+        	}
+        	   	
+        }
+        catch(Exception err)
+        {
+        	JOptionPane.showMessageDialog(null,"Error occured... Please contact admininstrator" + err);
+        }
+        
+        
     }
     
-    private class TextFieldHandler implements ActionListener 
-    {
-     
-         public void actionPerformed( ActionEvent event )
-         {          
-             if ( event.getSource() == txtID )
-             {
-                
-             }
-             // else if(event.getSource() == txtDescription)
-             // { 
-                 
-             // }
-             // else if(event.getSource() == txtSalary)
-             // {
-                 
-             // }
-         }
-      
-    }
     
       public class ButtonHandler implements ActionListener
     {

@@ -28,6 +28,7 @@ import java.awt.Font;
 import java.awt.HeadlessException;
 
 import USERCLASSES.Applicant;
+import USERCLASSES.CommonMethods;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -273,7 +274,9 @@ public class RegistrationScreen extends JFrame
 						String selectedMonth = info[1];
 						String selectedDay = info[2];
 						
-						if(usernameExists(txtUsername.getText()))
+						CommonMethods common = new CommonMethods();
+						
+						if(common.usernameExists(txtUsername.getText()))
 						{
 							JOptionPane.showMessageDialog(null,"Username "+ txtUsername.getText() + " already exist, choose another one");
 							txtUsername.setText("");
@@ -362,35 +365,5 @@ public class RegistrationScreen extends JFrame
             }
         }
         
-        public boolean usernameExists(String username)
-        {
-        	boolean exists = false ;
-        	
-        	try
-			{
-				br = new BufferedReader(new FileReader("applicants.txt"));
-				
-				String lines = null;
-				
-				while((lines = br.readLine())!= null)
-				{
-					String [] data = lines.split(",");
-					String fileUsername = data[8];
-					
-					if(username.equalsIgnoreCase(fileUsername))
-					{
-						exists = true;						
-					}
-												
-				}
-			}
-			catch(Exception err)
-			{
-				JOptionPane.showMessageDialog(null,"applicants.txt file not found : " + err);
-			}
-        	
-        	      	
-        	return exists;
-        }
     }
 }
