@@ -78,13 +78,14 @@ public class Applicant extends JFrame
                if(common.usernameExists(txtUsername.getText()))
                {
             	   //Do Something
+            	   dispose();
             	   ViewProfile view = new ViewProfile(txtUsername.getText().toLowerCase());
             	   view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                    view.setSize(900,900);
                    view.setVisible(true);
                    view.setResizable(false);
                    view.setLocationRelativeTo(null);
-                   dispose();
+                   
                }
                else
                {

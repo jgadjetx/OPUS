@@ -10,6 +10,9 @@ package GUI;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
+import USERCLASSES.CommonMethods;
+
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -113,9 +116,7 @@ public class OpeningScreen extends JFrame
                 getContentPane().repaint();
                 
                 LoginAs login = new LoginAs();
-                login.setSize(900,900);
-                login.setVisible(true);
-                login.setLocationRelativeTo(null);
+                CommonMethods.changePosition(login);
                 
             }
             else if(e.getSource() == btnAbout)
@@ -124,10 +125,7 @@ public class OpeningScreen extends JFrame
                  getContentPane().repaint();
                 
                  AboutScreen about = new AboutScreen();    
-                 about.setSize(900,900);
-                 about.setVisible(true);
-                 about.setLocationRelativeTo(null);
-                 about.setUndecorated(true);
+                 CommonMethods.changePosition(about);
                  
             }
             else if(e.getSource() == btnExit)

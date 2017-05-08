@@ -5,6 +5,8 @@ import java.io.FileReader;
 
 import javax.swing.JOptionPane;
 
+import javax.swing.JFrame;
+
 
 
 public class CommonMethods 
@@ -41,5 +43,13 @@ public class CommonMethods
     	      	
     	return exists;
     }
+	
+	public static void changePosition(JFrame obj)
+	{
+		obj.setSize(900,900);
+        obj.setVisible(true);
+        obj.setLocationRelativeTo(null);
+        
+	}
 
 }

@@ -12,6 +12,8 @@ import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
+import USERCLASSES.CommonMethods;
+
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -66,25 +68,19 @@ public class LoginAs extends JFrame
             {
             	dispose();
             	AdminOrApplicant as = new AdminOrApplicant();
-            	as.setSize(900,900);
-            	as.setVisible(true);
-            	as.setLocationRelativeTo(null);
+            	CommonMethods.changePosition(as);
             }
             else if(e.getSource() == btnRegister)
             {
             	dispose();
             	RegistrationScreen reg = new RegistrationScreen();
-            	reg.setSize(900,900);
-            	reg.setVisible(true);
-            	reg.setLocationRelativeTo(null);
+            	CommonMethods.changePosition(reg);
             }
             else if(e.getSource() == btnViewVac)
             {
             	dispose();
             	ViewVacancies vac = new ViewVacancies();
-            	vac.setSize(900,900);
-            	vac.setVisible(true);
-            	vac.setLocationRelativeTo(null);
+            	CommonMethods.changePosition(vac);
             }
         }
     }

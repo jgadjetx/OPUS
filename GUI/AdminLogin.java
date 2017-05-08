@@ -11,6 +11,9 @@ package GUI;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+
+import USERCLASSES.CommonMethods;
+
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
 
@@ -66,9 +69,7 @@ public class AdminLogin extends JFrame
            {
                	dispose();
                	CreateJob job = new CreateJob();
-               	job.setSize(900,900);
-           		job.setVisible(true);
-           		job.setLocationRelativeTo(null);
+               	CommonMethods.changePosition(job);
            }
            else if(e.getSource() == btnApplicant)
            {

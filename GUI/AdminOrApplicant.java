@@ -9,6 +9,9 @@ package GUI;
  */
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+
+import USERCLASSES.CommonMethods;
+
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
 
@@ -82,9 +85,7 @@ public class AdminOrApplicant extends JFrame
             {
                dispose();
                AdminLogin admin = new AdminLogin();
-               admin.setSize(900,900);
-               admin.setVisible(true);
-               admin.setLocationRelativeTo(null);
+               CommonMethods.changePosition(admin);
               
             		   
             }
@@ -92,9 +93,7 @@ public class AdminOrApplicant extends JFrame
             {
             	dispose();
             	Applicant app = new Applicant();
-            	app.setSize(900,900);
-                app.setVisible(true);
-                app.setLocationRelativeTo(null);
+            	CommonMethods.changePosition(app);
             }
         }
     }

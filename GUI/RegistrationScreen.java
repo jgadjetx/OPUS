@@ -36,6 +36,8 @@ import java.io.FileWriter;
 import java.io.BufferedReader;
 import java.io.FileReader;
 
+import USERCLASSES.CommonMethods;
+
 
 
 public class RegistrationScreen extends JFrame
@@ -254,7 +256,10 @@ public class RegistrationScreen extends JFrame
         {
             if(e.getSource() == btnBack)
             {
-                //Do Something
+                fetusDeletus();
+                LoginAs login = new LoginAs();
+                CommonMethods.changePosition(login);
+                
             }
             else if (e.getSource() == btnRegister)
             {
@@ -363,6 +368,11 @@ public class RegistrationScreen extends JFrame
 						JOptionPane.showMessageDialog(null,"Oops...An error occured ");
 					}         	         	
             }
+        }
+        
+        public void fetusDeletus()
+        {
+        	dispose();
         }
         
     }
