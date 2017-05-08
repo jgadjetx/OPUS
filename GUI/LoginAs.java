@@ -64,15 +64,27 @@ public class LoginAs extends JFrame
         {
             if(e.getSource() == btnLogin)
             {
-               
+            	dispose();
+            	AdminOrApplicant as = new AdminOrApplicant();
+            	as.setSize(900,900);
+            	as.setVisible(true);
+            	as.setLocationRelativeTo(null);
             }
             else if(e.getSource() == btnRegister)
             {
-                                 
+            	dispose();
+            	RegistrationScreen reg = new RegistrationScreen();
+            	reg.setSize(900,900);
+            	reg.setVisible(true);
+            	reg.setLocationRelativeTo(null);
             }
             else if(e.getSource() == btnViewVac)
             {
-                
+            	dispose();
+            	ViewVacancies vac = new ViewVacancies();
+            	vac.setSize(900,900);
+            	vac.setVisible(true);
+            	vac.setLocationRelativeTo(null);
             }
         }
     }

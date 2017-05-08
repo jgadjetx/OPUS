@@ -10,6 +10,7 @@ package GUI;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
 
@@ -63,15 +64,19 @@ public class AdminLogin extends JFrame
       {
            if(e.getSource() == btnCreate)
            {
-               
+               	dispose();
+               	CreateJob job = new CreateJob();
+               	job.setSize(900,900);
+           		job.setVisible(true);
+           		job.setLocationRelativeTo(null);
            }
            else if(e.getSource() == btnApplicant)
            {
-               
+               JOptionPane.showMessageDialog(null,"This option will be functional soon... Hold on to your seatbelts");
            }
            else if(e.getSource() == btnEmployees)
            {
-               
+        	   JOptionPane.showMessageDialog(null,"This option will be functional soon... Hold on tight");
            }
        }
    }

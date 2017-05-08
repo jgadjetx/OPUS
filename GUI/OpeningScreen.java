@@ -109,7 +109,14 @@ public class OpeningScreen extends JFrame
         {
             if(e.getSource() == btnBegin)
             {
-               
+            	getContentPane().removeAll(); 
+                getContentPane().repaint();
+                
+                LoginAs login = new LoginAs();
+                login.setSize(900,900);
+                login.setVisible(true);
+                login.setLocationRelativeTo(null);
+                
             }
             else if(e.getSource() == btnAbout)
             {
@@ -120,6 +127,7 @@ public class OpeningScreen extends JFrame
                  about.setSize(900,900);
                  about.setVisible(true);
                  about.setLocationRelativeTo(null);
+                 about.setUndecorated(true);
                  
             }
             else if(e.getSource() == btnExit)

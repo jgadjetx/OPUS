@@ -52,6 +52,7 @@ public class AboutScreen extends JFrame
         btnClose = new JButton("Close");
         btnClose.setSize(100,30);
         btnClose.setLocation(750,10);
+        btnClose.addActionListener(new ButtonHandler());
         
         
         
@@ -158,8 +159,8 @@ public class AboutScreen extends JFrame
         linkKeaGit.setSize(60,30);
         linkKeaGit.setLocation(600,772);
         
-        linkPjEmail = new JLabel("pa.muvhango@gmail.com");
-        linkPjEmail.setSize(150,30);
+        linkPjEmail = new JLabel("getintouch@phumudzo.co.za");
+        linkPjEmail.setSize(200,30);
         linkPjEmail.setLocation(50,805);
         
         linkKeaEmail = new JLabel("ekkonyana@gmail.com");
@@ -224,7 +225,7 @@ public class AboutScreen extends JFrame
            {
                try
                {
-                   Desktop.getDesktop().browse(new URI("https://github.com/PMJAYY"));
+                   Desktop.getDesktop().browse(new URI("https://github.com/jgadjetx"));
                }
                catch(Exception err)
                {
@@ -261,9 +262,20 @@ public class AboutScreen extends JFrame
        }
    }
    
-   public Container getPanel()
+   public class ButtonHandler implements ActionListener
    {
-       return pane;
+	  
+	public void actionPerformed(ActionEvent e) 
+	{
+		
+		if(e.getSource() == btnClose)
+		{
+			dispose();
+			System.exit(0);
+			
+		}
+		
+	}
    }
 }
 
