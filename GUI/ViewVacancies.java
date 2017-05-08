@@ -33,7 +33,7 @@ public class ViewVacancies extends JFrame
     private Container pane;
     private JLabel text;
     
-  //File Handling;
+    //File Handling;
     BufferedReader br = null;
     
     public ViewVacancies()
@@ -77,30 +77,38 @@ public class ViewVacancies extends JFrame
         	
         	String line;
         	
-        	while((line = br.readLine())!= null)
+        	while((line = br.readLine()) != null)
         	{
         		String [] info = line.split(",");
         		
         		String title = info[0];
         		String desc = info[1];
         		String salary = info[2];
+        		String expiryDate = info[3];
+        		
         		
         		output.append(title);
         		output.append("\n");
         		output.append(desc);
         		output.append("\n");
-        		output.append(salary);
+        		output.append("Monthly Salary : " + salary);   
+        		output.append("\n");
+        		output.append("Expiration : " + expiryDate);
         		output.append("\n");
         		output.append("\n");
         		output.append("\n");      		
         		
         	}
+        	
         }
         catch(Exception err)
         {
-        	JOptionPane.showMessageDialog(null,"Error occured, contact administrator");
+        	JOptionPane.showMessageDialog(null,"ERROR OCCURRED, CONTACT ADMINISTRATOR :" + err );
         }
+        
+        
     }  
+    
     
     public class ButtonHandler implements ActionListener
     {

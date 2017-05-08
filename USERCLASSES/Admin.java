@@ -22,14 +22,14 @@ public class Admin extends User
     	super("James","Ross","7004010672085","admin");
     }
     
-    public void createVacancy(String title,String desc,String salary)
+    public void createVacancy(String title,String desc,String salary,String expiryDate)
     {
     	try
     	{
     		
     		bw = new BufferedWriter(new FileWriter("vacancies.txt",true));
     		
-    		bw.write(title +","+desc +","+"R"+salary);
+    		bw.write(title + "," + desc + "," + "R" + salary + "," + expiryDate);
     		bw.newLine();
     		bw.close();
     		

@@ -9,11 +9,14 @@ package GUI;
  */
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
-import javax.swing.ImageIcon;
 import javax.swing.JTextField;
 
 import USERCLASSES.Admin;
+
+import java.util.Properties;
+import org.jdatepicker.impl.*;
 
 import javax.swing.JTextArea;
 
@@ -26,12 +29,13 @@ import java.awt.Container;
 
 public class CreateJob extends JFrame
 {
-    private JLabel lblTitle,lblName,lblSalary,lblAdmin,lblDescription;
+    private JLabel lblTitle,lblName,lblSalary,lblAdmin,lblDescription,lblExpire;
     private JTextField txtTitle,txtSalary;
     private JTextArea txtDescription;
     private JButton btnSubmit;
     private Container pane; 
-            
+    JDatePickerImpl datePicker;
+    
     public CreateJob()
     {
         super("Create Job");
@@ -46,20 +50,38 @@ public class CreateJob extends JFrame
         // labelImage.setLocation(300,100);
         // add(labelImage);  
         
-        lblAdmin = new JLabel("Admin");
+        lblAdmin = new JLabel("Admin:");
         lblAdmin.setFont(heading);
         lblAdmin.setSize(200,40);
-        lblAdmin.setLocation(650,100);
+        lblAdmin.setLocation(650,50);
         
         lblName = new JLabel("Keagile Konyana");
         lblName.setFont(name);
         lblName.setSize(170,40);
-        lblName.setLocation(635,135);
+        lblName.setLocation(635,80);
                
         lblTitle = new JLabel("Title :");
         lblTitle.setFont(label);
         lblTitle.setSize(70,30);
         lblTitle.setLocation(40,100);
+        
+        lblExpire = new JLabel("Expires:");
+        lblExpire.setFont(label);
+        lblExpire.setSize(80,30);
+        lblExpire.setLocation(40,550);
+        
+        UtilDateModel model = new UtilDateModel();
+        Properties p = new Properties();
+        p.put("text.today","Today");
+        p.put("text.month","Month");
+        p.put("text.year","Year");
+        JDatePanelImpl datePanel = new JDatePanelImpl(model,p);
+        datePicker = new JDatePickerImpl(datePanel,new DateLabelFormatter());
+        datePicker.setLocation(40,580);
+        datePicker.setSize(150,30);
+        datePicker.setFont(heading);
+        
+        
         
         txtTitle = new JTextField(25);
         txtTitle.setSize(200,30);
@@ -68,24 +90,24 @@ public class CreateJob extends JFrame
         lblDescription = new JLabel("Description :");
         lblDescription.setFont(label);
         lblDescription.setSize(200,30);
-        lblDescription.setLocation(40,230);
+        lblDescription.setLocation(40,180);
         
         txtDescription = new JTextArea(250,250);
         txtDescription.setSize(400,200);
-        txtDescription.setLocation(40,260);
+        txtDescription.setLocation(40,215);
           
-        lblSalary = new JLabel("Monthly salary :");
+        lblSalary = new JLabel("Monthly salary(R) :");
         lblSalary.setFont(label);
         lblSalary.setSize(200,30);
-        lblSalary.setLocation(40,525);
+        lblSalary.setLocation(40,440);
         
         txtSalary = new JTextField(25);
         txtSalary.setSize(150,30);
-        txtSalary.setLocation(40,550);
+        txtSalary.setLocation(40,470);
         
         btnSubmit = new JButton("Submit");
-        btnSubmit.setSize(100,30);
-        btnSubmit.setLocation(660,540);
+        btnSubmit.setSize(120,30);
+        btnSubmit.setLocation(350,700);
         btnSubmit.addActionListener(new ButtonHandler());
         
         //pane
@@ -100,6 +122,8 @@ public class CreateJob extends JFrame
         pane.add(lblSalary);
         pane.add(txtSalary);
         pane.add(btnSubmit);
+        pane.add(lblExpire);
+        pane.add(datePicker);
         
     }
      
@@ -111,11 +135,22 @@ public class CreateJob extends JFrame
           if(e.getSource() == btnSubmit)
           {
         	  Admin admin = new Admin();
-        	  admin.createVacancy(txtTitle.getText(),txtDescription.getText(),txtSalary.getText());  
         	  
-        	  txtTitle.setText(null);
-        	  txtDescription.setText(null);
-        	  txtSalary.setText(null);
+        	  if(txtTitle.getText().length() < 1 || txtDescription.getText().length() < 1 || txtSalary.getText().length() < 1 || datePicker.getJFormattedTextField().getText().length() < 1 )
+        	  {
+        		  JOptionPane.showMessageDialog(null,"Can't append null values...Try again");
+        	  }
+        	  else
+        	  {
+        		  admin.createVacancy(txtTitle.getText(),txtDescription.getText(),txtSalary.getText(),datePicker.getJFormattedTextField().getText());    
+        		  txtTitle.setText(null);
+            	  txtDescription.setText(null);
+            	  txtSalary.setText(null);
+            	  datePicker.getJFormattedTextField().setText(null);
+        	  }
+        	  
+        	  
+        	  
         	  
         	  
           }
