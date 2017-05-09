@@ -114,6 +114,7 @@ public class CreateJob extends JFrame
         btnBack = new JButton("Back");
         btnBack.setSize(250,30);
         btnBack.setLocation(330,750);
+        btnBack.addActionListener(new ButtonHandler());
 
         //pane
         pane = getContentPane();
@@ -153,8 +154,7 @@ public class CreateJob extends JFrame
         		  txtTitle.setText(null);
             	  txtDescription.setText(null);
             	  txtSalary.setText(null);
-            	  datePicker.getJFormattedTextField().setText(null);
-            	  
+            	  datePicker.getJFormattedTextField().setText(null);      	  
         	  }
  	  
           }

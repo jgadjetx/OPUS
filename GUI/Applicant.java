@@ -62,6 +62,8 @@ public class Applicant extends JFrame
         btnBack.setLocation(335,580);
         btnBack.addActionListener(new ButtonHandler());
         
+        this.getRootPane().setDefaultButton(btnLogin);
+        
         //pane
         pane = getContentPane();
         pane.setLayout(null);
@@ -86,11 +88,7 @@ public class Applicant extends JFrame
             	   //Do Something
             	   dispose();
             	   ViewProfile view = new ViewProfile(txtUsername.getText().toLowerCase());
-            	   view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                   view.setSize(900,900);
-                   view.setVisible(true);
-                   view.setResizable(false);
-                   view.setLocationRelativeTo(null);
+            	   CommonMethods.changePosition(view);
                    
                }
                else
