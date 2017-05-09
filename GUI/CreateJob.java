@@ -114,7 +114,15 @@ public class CreateJob extends JFrame
         btnBack = new JButton("Back");
         btnBack.setSize(250,30);
         btnBack.setLocation(330,750);
+<<<<<<< HEAD
 
+=======
+<<<<<<< HEAD
+=======
+        btnBack.addActionListener(new ButtonHandler());
+>>>>>>> patch
+        
+>>>>>>> c051359aa9fda8c78b112fc2e567ca2d6bcd5a64
         //pane
         pane = getContentPane();
         pane.setLayout(null);

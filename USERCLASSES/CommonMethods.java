@@ -50,11 +50,7 @@ public class CommonMethods
 		obj.setUndecorated(true);
 		obj.setAlwaysOnTop(true); 
         obj.setVisible(true);
-<<<<<<< HEAD
-        obj.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-=======
         obj.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
->>>>>>> patch
         obj.setLocationRelativeTo(null);
         
 	}
