@@ -115,6 +115,7 @@ public class CreateJob extends JFrame
         btnBack.setSize(250,30);
         btnBack.setLocation(330,750);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 <<<<<<< HEAD
@@ -123,6 +124,10 @@ public class CreateJob extends JFrame
 >>>>>>> patch
         
 >>>>>>> c051359aa9fda8c78b112fc2e567ca2d6bcd5a64
+=======
+        btnBack.addActionListener(new ButtonHandler());
+
+>>>>>>> patch
         //pane
         pane = getContentPane();
         pane.setLayout(null);
@@ -161,8 +166,7 @@ public class CreateJob extends JFrame
         		  txtTitle.setText(null);
             	  txtDescription.setText(null);
             	  txtSalary.setText(null);
-            	  datePicker.getJFormattedTextField().setText(null);
-            	  
+            	  datePicker.getJFormattedTextField().setText(null);      	  
         	  }
  	  
           }
