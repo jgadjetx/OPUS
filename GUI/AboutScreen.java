@@ -46,12 +46,12 @@ public class AboutScreen extends JFrame
         txtAbout = new JLabel("ABOUT");
         txtAbout.setFont(font);
         txtAbout.setSize(200,30);
-        txtAbout.setLocation(10,10);
+        txtAbout.setLocation(30,15);
         
         //Button
         btnClose = new JButton("Close");
         btnClose.setSize(100,30);
-        btnClose.setLocation(750,10);
+        btnClose.setLocation(750,15);
         btnClose.addActionListener(new ButtonHandler());
         
         

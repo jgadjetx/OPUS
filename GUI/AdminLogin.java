@@ -25,7 +25,7 @@ import java.awt.event.ActionEvent;
 
 public class AdminLogin extends JFrame
 {
-    private JButton btnCreate,btnApplicant,btnEmployees;
+    private JButton btnCreate,btnApplicant,btnEmployees,btnBack;
     private Container pane;
     
     public AdminLogin()
@@ -39,22 +39,28 @@ public class AdminLogin extends JFrame
         labelImage.setLocation(200,80);
                 
         btnCreate = new JButton("Create Job");
-        btnCreate.setSize(130,30);
+        btnCreate.setSize(200,30);
         btnCreate.addActionListener(new ButtonHandler());
-        btnCreate.setLocation(200,500); 
+        btnCreate.setLocation(359,500); 
                 
-        btnApplicant = new JButton("View Applicants"); 
-        btnApplicant.setSize(140,30);
+        btnApplicant = new JButton("View and Employ Applicants"); 
+        btnApplicant.setSize(200,30);
         btnApplicant.addActionListener(new ButtonHandler());
         btnApplicant.setLocation(359,550);
         
         btnEmployees = new JButton("View Employees");
-        btnEmployees.setSize(150,30);
+        btnEmployees.setSize(200,30);
         btnEmployees.addActionListener(new ButtonHandler());
-        btnEmployees.setLocation(560,600);
+        btnEmployees.setLocation(359,600);
+        
+        btnBack = new JButton("Logout");
+        btnBack.setSize(200,30);
+        btnBack.setLocation(359,670);
+        btnBack.addActionListener(new ButtonHandler());
         
         pane = getContentPane();
         pane.setLayout(null);
+        pane.add(btnBack);
         pane.add(labelImage);
         pane.add(btnCreate);
         pane.add(btnApplicant);
@@ -78,6 +84,12 @@ public class AdminLogin extends JFrame
            else if(e.getSource() == btnEmployees)
            {
         	   JOptionPane.showMessageDialog(null,"This option will be functional soon... Hold on tight");
+           }
+           else if(e.getSource() == btnBack)
+           {
+        	   dispose();
+        	   AdminOrApplicant admin = new AdminOrApplicant();
+        	   CommonMethods.changePosition(admin);
            }
        }
    }

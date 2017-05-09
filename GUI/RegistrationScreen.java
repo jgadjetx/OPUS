@@ -68,14 +68,14 @@ public class RegistrationScreen extends JFrame
         
         //Buttons
         btnBack = new JButton("Back");
-        btnBack.setSize(100,30);
-        btnBack.setLocation(750,30);
+        btnBack.setSize(500,30);
+        btnBack.setLocation(220,770);
         btnBack.addActionListener(new ButtonHandler());
         
         
         btnRegister = new JButton("Register");
         btnRegister.setSize(500,30);
-        btnRegister.setLocation(190,800);
+        btnRegister.setLocation(220,730);
         btnRegister.addActionListener(new ButtonHandler());
         
         // Labels

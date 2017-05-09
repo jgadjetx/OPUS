@@ -9,6 +9,9 @@ package GUI;
  */
 
 import javax.swing.JTextArea;
+
+import USERCLASSES.CommonMethods;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
@@ -44,19 +47,20 @@ public class ViewVacancies extends JFrame
         text = new JLabel("View Vacancies");
         text.setFont(font);
         text.setSize(300,30);
-        text.setLocation(300,56);
+        text.setLocation(320,56);
         
         btnBack = new JButton("Back");
-        btnBack.setSize(100,30);
-        btnBack.setLocation(700,56);
+        btnBack.setSize(250,30);
+        btnBack.addActionListener(new ButtonHandler());
+        btnBack.setLocation(350,800);
                 
-        btnLogin = new JButton("Login");
-        btnLogin.setSize(100,30);
-        btnLogin.setLocation(700,800);     
+        btnLogin = new JButton("Apply For Job");
+        btnLogin.setSize(250,30);
+        btnLogin.setLocation(350,750);     
         
         output = new JTextArea(200,500);
         output.setSize(500,600);
-        output.setLocation(150,120);
+        output.setLocation(200,120);
         output.setEditable(false);
         
         //Panel
@@ -116,7 +120,9 @@ public class ViewVacancies extends JFrame
         {
             if(e.getSource() == btnBack)
             {
-                
+                dispose();
+                LoginAs home = new LoginAs();
+                CommonMethods.changePosition(home);
             }
             else
             {

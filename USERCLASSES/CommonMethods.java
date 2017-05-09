@@ -47,7 +47,10 @@ public class CommonMethods
 	public static void changePosition(JFrame obj)
 	{
 		obj.setSize(900,900);
+		obj.setUndecorated(true);
+		obj.setAlwaysOnTop(true); 
         obj.setVisible(true);
+        obj.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         obj.setLocationRelativeTo(null);
         
 	}
