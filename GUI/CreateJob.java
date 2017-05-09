@@ -14,6 +14,7 @@ import javax.swing.JButton;
 import javax.swing.JTextField;
 
 import USERCLASSES.Admin;
+import USERCLASSES.CommonMethods;
 
 import java.util.Properties;
 import org.jdatepicker.impl.*;
@@ -113,6 +114,7 @@ public class CreateJob extends JFrame
         btnBack = new JButton("Back");
         btnBack.setSize(250,30);
         btnBack.setLocation(330,750);
+        btnBack.addActionListener(new ButtonHandler());
         
         //pane
         pane = getContentPane();
@@ -147,17 +149,21 @@ public class CreateJob extends JFrame
         	  }
         	  else
         	  {
+        		  JOptionPane.showMessageDialog(null,"Vacancy Added!!");
         		  admin.createVacancy(txtTitle.getText(),txtDescription.getText(),txtSalary.getText(),datePicker.getJFormattedTextField().getText());    
         		  txtTitle.setText(null);
             	  txtDescription.setText(null);
             	  txtSalary.setText(null);
             	  datePicker.getJFormattedTextField().setText(null);
+            	  
         	  }
-        	  
-        	  
-        	  
-        	  
-        	  
+ 	  
+          }
+          else if (e.getSource() == btnBack)
+          {
+              dispose();
+              AdminLogin admin = new AdminLogin();
+              CommonMethods.changePosition(admin);
           }
       }
     }

@@ -1,1 +1,3 @@
 Bus Driver,You will be transporting students/educators to various destinations,R3500,2017-07-07
+Janitor,You will be required to keep the school clean and general maintanace,R5500,99,2017-06-01
+Security Guard,You will be responsible for all security activities around the school,R5230.33,2017-06-01
