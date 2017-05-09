@@ -104,7 +104,7 @@ public class AboutScreen extends JFrame
 
         
         //
-        pjName = new JLabel("Phumudzo Muvhango");
+        pjName = new JLabel("Phumudzo Muvhango [26011204]");
         pjName.setFont(font2);
         pjName.setSize(400,30);
         pjName.setLocation(10,675);
@@ -114,7 +114,7 @@ public class AboutScreen extends JFrame
         txtPjRoles .setSize(400,30);
         txtPjRoles.setLocation(10,700);
         
-        keaName = new JLabel("Keagile Konyana");
+        keaName = new JLabel("Keagile Konyana [27267253]");
         keaName.setFont(font2);
         keaName.setSize(400,30);
         keaName.setLocation(562,675);

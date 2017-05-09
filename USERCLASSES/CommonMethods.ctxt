@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=CommonMethods
+comment1.params=username
+comment1.target=boolean\ usernameExists(java.lang.String)
+comment2.params=obj
+comment2.target=void\ changePosition(javax.swing.JFrame)
+numComments=3
