@@ -79,11 +79,13 @@ public class AdminLogin extends JFrame
            }
            else if(e.getSource() == btnApplicant)
            {
-               JOptionPane.showMessageDialog(null,"This option will be functional soon... Hold on to your seatbelts");
+        	   Dialog die = new Dialog("This option will be functional soon... Hold on tight");
+        	   CommonMethods.strokeIt(die);
            }
            else if(e.getSource() == btnEmployees)
            {
-        	   JOptionPane.showMessageDialog(null,"This option will be functional soon... Hold on tight");
+        	   Dialog die = new Dialog("This option will be functional soon... Hold on tight");
+        	   CommonMethods.strokeIt(die);
            }
            else if(e.getSource() == btnBack)
            {

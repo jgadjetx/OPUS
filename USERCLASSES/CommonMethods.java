@@ -1,5 +1,6 @@
 package USERCLASSES;
 
+import java.awt.Frame;
 import java.io.BufferedReader;
 import java.io.FileReader;
 
@@ -53,6 +54,15 @@ public class CommonMethods
         obj.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         obj.setLocationRelativeTo(null);
         
+	}
+	
+	public static void strokeIt(JFrame obj)
+	{
+		obj.setSize(300,200);
+		obj.setAlwaysOnTop(true); 
+        obj.setVisible(true);
+        obj.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        obj.setLocationRelativeTo(null);
 	}
 
 }

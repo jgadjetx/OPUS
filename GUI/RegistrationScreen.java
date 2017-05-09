@@ -348,7 +348,9 @@ public class RegistrationScreen extends JFrame
 							bw.newLine();
 							bw.close();
 							
-							JOptionPane.showMessageDialog(null,"Registration Success");
+							
+							Dialog die = new Dialog("Registration Success");
+				        	CommonMethods.strokeIt(die);
 							txtName.setText("");
 							txtSurname.setText("");
 							txtGovID.setText("");
@@ -363,7 +365,8 @@ public class RegistrationScreen extends JFrame
 					}
 					catch (Exception e1) 
 					{
-						JOptionPane.showMessageDialog(null,"Oops...An error occured ");
+						Dialog die = new Dialog("Oops...An error occured");
+			        	CommonMethods.strokeIt(die);
 					}         	         	
             }
         }

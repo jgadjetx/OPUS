@@ -31,3 +31,5 @@
 /testerClass.class
 /EnterUsernameScreen.class
 /AboutScreen$ButtonHandler.class
+/Dialog.class
+/Dialog$Button.class

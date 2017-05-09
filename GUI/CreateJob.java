@@ -145,11 +145,13 @@ public class CreateJob extends JFrame
         	  
         	  if(txtTitle.getText().length() < 1 || txtDescription.getText().length() < 1 || txtSalary.getText().length() < 1 || datePicker.getJFormattedTextField().getText().length() < 1 )
         	  {
-        		  JOptionPane.showMessageDialog(null,"Can't append null values...Try again");
+        		  Dialog die = new Dialog("Cannot Apped Null Values");
+           	   		CommonMethods.strokeIt(die);
         	  }
         	  else
         	  {
-        		  JOptionPane.showMessageDialog(null,"Vacancy Added!!");
+        		  Dialog die = new Dialog("Vacancy Added");
+        		  CommonMethods.strokeIt(die);
         		  admin.createVacancy(txtTitle.getText(),txtDescription.getText(),txtSalary.getText(),datePicker.getJFormattedTextField().getText());    
         		  txtTitle.setText(null);
             	  txtDescription.setText(null);

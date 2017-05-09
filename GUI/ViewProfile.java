@@ -262,7 +262,8 @@ public class ViewProfile extends JFrame
         }
         catch(Exception err)
         {
-        	JOptionPane.showMessageDialog(null,"Error occured... Please contact admininstrator" + err);
+        	Dialog die = new Dialog("Oops...An error occured");
+        	CommonMethods.strokeIt(die);
         }
         
         

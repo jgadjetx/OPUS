@@ -107,7 +107,8 @@ public class ViewVacancies extends JFrame
         }
         catch(Exception err)
         {
-        	JOptionPane.showMessageDialog(null,"ERROR OCCURRED, CONTACT ADMINISTRATOR :" + err );
+        	Dialog die = new Dialog("Oops...An error occured");
+        	CommonMethods.strokeIt(die);
         }
         
         
