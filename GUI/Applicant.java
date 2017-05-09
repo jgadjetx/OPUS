@@ -93,8 +93,9 @@ public class Applicant extends JFrame
                }
                else
                {
-            	   JOptionPane.showMessageDialog(null,"This Account Doesn't Exist...Please Register");
-            	   txtUsername.setText("");
+            	   Dialog die = new Dialog("User Not Found...Please Register");
+            	   CommonMethods.strokeIt(die);
+            	   txtUsername.setText(null);
             	   
                }          		   
            }
