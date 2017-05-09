@@ -39,6 +39,8 @@ public class OpeningScreen extends JFrame
 {
     private JPanel mainPanel,buttonPanel;
     private JButton btnBegin,btnAbout,btnExit;
+    private Container pane;
+    
 
     public OpeningScreen()
     {        

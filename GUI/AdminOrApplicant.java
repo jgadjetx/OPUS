@@ -23,7 +23,7 @@ import java.awt.event.ActionEvent;
 
 public class AdminOrApplicant extends JFrame
 {
-    private JButton btnAdmin,btnUser;
+    private JButton btnAdmin,btnUser,btnBack;
     private JLabel JloginText, JorText;
     private Container pane;
     
@@ -66,9 +66,16 @@ public class AdminOrApplicant extends JFrame
         btnUser.setSize(155,30);
         btnUser.setLocation(515,540);
         
+        
+        btnBack = new JButton("Back");
+        btnBack.setSize(410,30);
+        btnBack.setLocation(260,590);
+        btnBack.addActionListener(new ButtonHandler());
+        
         //pane
         pane = getContentPane();
         pane.setLayout(null);
+        pane.add(btnBack);
         pane.add(labelImage);
         pane.add(JloginText);
         pane.add(btnAdmin);
@@ -94,6 +101,12 @@ public class AdminOrApplicant extends JFrame
             	dispose();
             	Applicant app = new Applicant();
             	CommonMethods.changePosition(app);
+            }
+            else if(e.getSource() == btnBack)
+            {
+            	dispose();
+            	LoginAs home = new LoginAs();
+            	CommonMethods.changePosition(home);
             }
         }
     }

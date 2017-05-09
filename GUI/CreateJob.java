@@ -32,7 +32,7 @@ public class CreateJob extends JFrame
     private JLabel lblTitle,lblName,lblSalary,lblAdmin,lblDescription,lblExpire;
     private JTextField txtTitle,txtSalary;
     private JTextArea txtDescription;
-    private JButton btnSubmit;
+    private JButton btnSubmit,btnBack;
     private Container pane; 
     JDatePickerImpl datePicker;
     
@@ -107,13 +107,18 @@ public class CreateJob extends JFrame
         
         btnSubmit = new JButton("Submit");
         btnSubmit.setSize(120,30);
-        btnSubmit.setLocation(350,700);
+        btnSubmit.setLocation(400,700);
         btnSubmit.addActionListener(new ButtonHandler());
+        
+        btnBack = new JButton("Back");
+        btnBack.setSize(250,30);
+        btnBack.setLocation(330,750);
         
         //pane
         pane = getContentPane();
         pane.setLayout(null);
         pane.add(lblAdmin);
+        pane.add(btnBack);
         pane.add(lblName);
         pane.add(lblTitle);
         pane.add(txtTitle);

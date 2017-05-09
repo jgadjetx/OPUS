@@ -27,7 +27,7 @@ public class Applicant extends JFrame
 {
     private JLabel applicantLabel, usernameLabel;
     private JTextField txtUsername;
-    private JButton btnLogin;
+    private JButton btnLogin,btnBack;
     private Container pane;
     
     public Applicant()
@@ -57,10 +57,16 @@ public class Applicant extends JFrame
         btnLogin.setSize(250,30);
         btnLogin.setLocation(335,540);
         
+        btnBack = new JButton("Back");
+        btnBack.setSize(250,30);
+        btnBack.setLocation(335,580);
+        btnBack.addActionListener(new ButtonHandler());
+        
         //pane
         pane = getContentPane();
         pane.setLayout(null);
         pane.add(labelImage);
+        pane.add(btnBack);
         pane.add(usernameLabel);
         pane.add(txtUsername);
         pane.add(btnLogin);
@@ -93,6 +99,12 @@ public class Applicant extends JFrame
             	   txtUsername.setText("");
             	   
                }          		   
+           }
+           else if(e.getSource() == btnBack)
+           {
+        	   dispose();
+        	   AdminOrApplicant admin = new AdminOrApplicant();
+        	   CommonMethods.changePosition(admin);
            }
        }   
    }

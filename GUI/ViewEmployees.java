@@ -52,6 +52,7 @@ public class ViewEmployees extends JFrame
         btnBack = new JButton("Back");
         btnBack.setSize(80,30);
         btnBack.setLocation(700,10);
+        btnBack.addActionListener(new ButtonHandler());
         
         btnAddEmployee = new JButton("Add Employee");
         btnAddEmployee.setSize(120,30);

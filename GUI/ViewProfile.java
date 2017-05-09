@@ -16,6 +16,8 @@ import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import javax.swing.JTextField;
 
+import USERCLASSES.CommonMethods;
+
 import java.awt.Font;
 
 import java.awt.Container;
@@ -180,9 +182,8 @@ public class ViewProfile extends JFrame
         
         //Button 
         btnLogout = new JButton("Logout");
-        btnLogout.addActionListener(new ButtonHandler());
-        btnLogout.setSize(100,30);
-        btnLogout.setLocation(650,680);
+        btnLogout.setSize(250,30);
+        btnLogout.setLocation(380,760);
         btnLogout.addActionListener(new ButtonHandler());
         
         
@@ -274,7 +275,9 @@ public class ViewProfile extends JFrame
       {
           if(e.getSource() == btnLogout)
           {
-            
+        	  dispose();
+        	  LoginAs home = new LoginAs();
+        	  CommonMethods.changePosition(home);
           }
       }
     }

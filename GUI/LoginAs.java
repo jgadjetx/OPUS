@@ -22,7 +22,7 @@ import java.awt.Container;
 public class LoginAs extends JFrame
 {
     private JPanel mainPanel,imagePanel,buttonPanel;
-    private JButton btnLogin,btnRegister,btnViewVac;
+    private JButton btnLogin,btnRegister,btnViewVac,btnExit;
     private Container pane;
     
     public LoginAs()
@@ -37,19 +37,24 @@ public class LoginAs extends JFrame
         
         //Adding the buttons
         btnLogin = new JButton("Login");
-        btnLogin.setSize(100,30);
+        btnLogin.setSize(250,30);
         btnLogin.addActionListener(new ButtonHandler());
-        btnLogin.setLocation(400,450);
+        btnLogin.setLocation(320,500);
         
         btnRegister = new JButton("Register");
-        btnRegister.setSize(100,30);
+        btnRegister.setSize(250,30);
         btnRegister.addActionListener(new ButtonHandler());
-        btnRegister.setLocation(400,490);
+        btnRegister.setLocation(320,550);
         
         btnViewVac = new JButton("View Vacancies");
-        btnViewVac.setSize(150,30);
+        btnViewVac.setSize(250,30);
         btnViewVac.addActionListener(new ButtonHandler());
-        btnViewVac.setLocation(375,530);
+        btnViewVac.setLocation(320,600);
+        
+        btnExit = new JButton("Exit");
+        btnExit.setSize(250,30);
+        btnExit.setLocation(320,670);
+        btnExit.addActionListener(new ButtonHandler());
         
         //Creation of panels
         pane = getContentPane();
@@ -57,7 +62,8 @@ public class LoginAs extends JFrame
         pane.add(labelImage);
         pane.add(btnLogin);
         pane.add(btnRegister);
-        pane.add(btnViewVac);        
+        pane.add(btnViewVac);      
+        pane.add(btnExit);
     }
     
      public class ButtonHandler implements ActionListener
@@ -81,6 +87,10 @@ public class LoginAs extends JFrame
             	dispose();
             	ViewVacancies vac = new ViewVacancies();
             	CommonMethods.changePosition(vac);
+            }
+            else if(e.getSource() == btnExit)
+            {
+            	System.exit(0);
             }
         }
     }
