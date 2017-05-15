@@ -15,6 +15,8 @@ import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 import org.jdatepicker.impl.*;
 
@@ -30,7 +32,7 @@ import USERCLASSES.CommonMethods;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
-
+import java.io.IOException;
 import java.io.BufferedReader;
 import java.io.FileReader;
 
@@ -55,10 +57,11 @@ public class RegistrationScreen extends JFrame
     
     BufferedWriter bw;
     BufferedReader br;
+    List<String> jobs = new ArrayList<String>();
     
     
     
-    public RegistrationScreen()
+    public RegistrationScreen() 
     {
         super("Registration");
         
@@ -208,10 +211,32 @@ public class RegistrationScreen extends JFrame
         txtUsername.setSize(400,30);
         txtUsername.setLocation(340,575);
         
+        //AbutiFillUp
         
+        try
+        {        	
+        	br = new BufferedReader(new FileReader("vacancies.txt"));
+        	
+        	String line = null;
+        	
+        	while((line = br.readLine())!= null)
+        	{
+        		String [] info = line.split(",");
+        		String theJob = info[0];
+        		
+        		jobs.add(theJob);
+        	}
+        }
+        catch(IOException err)
+        {
+        	Dialog die = new Dialog("File Error... Contact Admin");
+        	CommonMethods.strokeIt(die);
+        }
+       
         
+        String [] lineArray = jobs.toArray(new String[]{});
         
-        comboJob = new JComboBox(new String [] {"Bus Driver"});//Populated by textfile with available Jobs
+        comboJob = new JComboBox(lineArray);
         comboJob.setSize(400,30);
         comboJob.setLocation(340,625);
         comboJob.setSelectedIndex(-1);
