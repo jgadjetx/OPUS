@@ -1,4 +1,4 @@
-Bus Driver,You will be transporting students/educators to various destinations,R3500,2017-07-07
-Janitor,You will be required to keep the school clean and general maintanace,R5500,99,2017-06-01
-Security Guard,You will be responsible for all security activities around the school,R5230.33,2017-06-01
-Gate Keeper,We are looking for someone who will monitor activites around the mainn gate with the security guard,R2550.00,2017-06-05
+Taxi Driver,You will be transporting students from home to school and back again,R5020.99,2017-05-31
+Janitor,You will make sure that school building is at top notch,R8999.50,2017-05-29
+Security Guard Manager,You will responsible for the overall security of the school,R8999.99,2018-05-04
+qwerq,qwerqwer,R50,2017-05-12

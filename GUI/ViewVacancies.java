@@ -37,7 +37,7 @@ public class ViewVacancies extends JFrame
     private JLabel text;
     
     //File Handling;
-    BufferedReader br = null;
+    BufferedReader br,br2;
     
     public ViewVacancies()
     {   
@@ -54,9 +54,10 @@ public class ViewVacancies extends JFrame
         btnBack.addActionListener(new ButtonHandler());
         btnBack.setLocation(350,800);
                 
-        btnLogin = new JButton("Apply For Job");
+        btnLogin = new JButton("Apply For Jobs");
         btnLogin.setSize(250,30);
         btnLogin.setLocation(350,750);     
+        btnLogin.addActionListener(new ButtonHandler());
         
         output = new JTextArea(200,500);
         output.setSize(500,600);
@@ -125,9 +126,12 @@ public class ViewVacancies extends JFrame
                 LoginAs home = new LoginAs();
                 CommonMethods.changePosition(home);
             }
-            else
-            {
-                
+            else if(e.getSource() == btnLogin)
+            {           
+            	dispose();
+            	RegistrationScreen reg = new RegistrationScreen();
+                CommonMethods.changePosition(reg);
+            	
             }
         }
     }

@@ -16,6 +16,9 @@ import USERCLASSES.CommonMethods;
 
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
 import java.awt.Container;
 
@@ -24,6 +27,8 @@ public class LoginAs extends JFrame
     private JPanel mainPanel,imagePanel,buttonPanel;
     private JButton btnLogin,btnRegister,btnViewVac,btnExit;
     private Container pane;
+    
+    private BufferedReader br;
     
     public LoginAs()
     {
@@ -78,15 +83,66 @@ public class LoginAs extends JFrame
             }
             else if(e.getSource() == btnRegister)
             {
-            	dispose();
-            	RegistrationScreen reg = new RegistrationScreen();
-            	CommonMethods.changePosition(reg);
+            	//Check if jobs are there
+            	
+            	try
+            	{
+            		br = new BufferedReader(new FileReader("vacancies.txt"));
+            		
+            		String line = null;
+            		
+            		if((line = br.readLine())!= null)
+            		{
+            			dispose();
+            			RegistrationScreen reg = new RegistrationScreen();
+                		CommonMethods.changePosition(reg);
+            			
+            		}
+            		else
+            		{
+            			Dialog die = new Dialog("There are no jobs at the moment");
+               	   		CommonMethods.strokeIt(die);
+            		}
+            		
+            	}
+            	catch(Exception err)
+            	{
+            		Dialog die = new Dialog("Error occured, please contact admin");
+           	   		CommonMethods.strokeIt(die);
+            	}
+            	
+            	
             }
             else if(e.getSource() == btnViewVac)
             {
-            	dispose();
-            	ViewVacancies vac = new ViewVacancies();
-            	CommonMethods.changePosition(vac);
+            	
+            	
+            	try
+            	{
+            		br = new BufferedReader(new FileReader("vacancies.txt"));
+            		
+            		String line = null;
+            		
+            		if((line = br.readLine())!= null)
+            		{
+            			dispose();
+                    	ViewVacancies vac = new ViewVacancies();
+                    	CommonMethods.changePosition(vac);
+            			
+            		}
+            		else
+            		{
+            			Dialog die = new Dialog("There are no jobs at the moment");
+               	   		CommonMethods.strokeIt(die);
+            		}
+            		
+            	}
+            	catch(Exception err)
+            	{
+            		Dialog die = new Dialog("Error occured, please contact admin");
+           	   		CommonMethods.strokeIt(die);
+            	}
+            	
             }
             else if(e.getSource() == btnExit)
             {
