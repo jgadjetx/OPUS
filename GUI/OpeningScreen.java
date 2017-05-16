@@ -53,7 +53,7 @@ public class OpeningScreen extends JFrame
         getContentPane().setBackground(Color.BLACK);
         setLayout(new BorderLayout());
         
-        ImageIcon image = new ImageIcon("Resources//comp.gif");
+        ImageIcon image = new ImageIcon("Resources//logo1.png");
         JLabel label = new JLabel("",image,JLabel.CENTER);       
         
         //Buttons        

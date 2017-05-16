@@ -26,7 +26,7 @@ public class Dialog extends JFrame
 		btn.addActionListener(new Button());
 		
 		lbl = new JLabel(text);
-		lbl.setSize(250,30);
+		lbl.setSize(500,30);
 		lbl.setLocation(10,20);
 		
 		pane = getContentPane();

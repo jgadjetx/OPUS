@@ -142,20 +142,58 @@ public class EmployApplicant extends JFrame
 								{
 									bw = new BufferedWriter(new FileWriter("employees.txt",true));
 										
-									bw.write(name +"," + surname +","+ jobApplied +","+ gender +","+ user.getAge() +","+ driverLic );
+									bw.write(uniqueID + ","+name +"," + surname +","+ jobApplied +","+ gender +","+ user.getAge() +","+ driverLic );
 									bw.newLine();
 									bw.close();
 									
-							
+									//Change Status							
+									File original = new File("applicants.txt");
+									File temp = new File("tempApplicants.txt");
 									
-									Dialog die = new Dialog("Applicant "+ uniqueID + " is now an employee");
-									CommonMethods.strokeIt(die);
+									BufferedReader reader = new BufferedReader(new FileReader(original));
+									BufferedWriter writer = new BufferedWriter(new FileWriter(temp));
 									
+									String line = null;
 									
+									while((line = reader.readLine()) != null)
+									{
+										String [] data = line.split(",");
+										
+										String readCode = data[0];
+										
+										if(readCode.equals(uniqueID))
+										{
+											String newLine = "Employed";
+											
+											String uniqueID = info[0];
+							    			String jobApplied = info[1];
+							    			String highQual = info[2];
+							    			String driverLic = info[3];
+							    			String gender = info[4];
+							        		String name = info[5];
+							        		String surname = info[6];
+							        		String govID = info[7];
+							        		String username = info[8];
+											
+											writer.write(uniqueID +","+ jobApplied +","+ highQual +","+ driverLic +","+ gender +","+ name +","+ surname +","+ govID +","+ username +","+ "Employed");
+											writer.newLine();										
+										}
+										else
+										{
+											writer.write(line);
+											writer.newLine();
+											continue;
+										}										
+										
+									}
+									
+									reader.close();
+									writer.close();									
+									temp.renameTo(original);
 								}
 								catch(Exception err)
 								{
-									Dialog errr = new Dialog("Error Occured...Contact Admin");
+									Dialog errr = new Dialog("Error Occured...Contact Admin" + err);
 									CommonMethods.strokeIt(errr);
 								}
 									
@@ -189,7 +227,6 @@ public class EmployApplicant extends JFrame
                 
             }
             
-
         }
     }
     
