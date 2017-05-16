@@ -175,7 +175,7 @@ public class EmployApplicant extends JFrame
 							        		String govID = info[7];
 							        		String username = info[8];
 											
-											writer.write(uniqueID +","+ jobApplied +","+ highQual +","+ driverLic +","+ gender +","+ name +","+ surname +","+ govID +","+ username +","+ "Employed");
+											writer.write(uniqueID +","+ jobApplied +","+ highQual +","+ driverLic +","+ gender +","+ name +","+ surname +","+ govID +","+ username +","+ newLine);
 											writer.newLine();										
 										}
 										else
@@ -187,8 +187,11 @@ public class EmployApplicant extends JFrame
 										
 									}
 									
+									br.close();
 									reader.close();
-									writer.close();									
+									writer.close();		
+									
+									original.delete();
 									temp.renameTo(original);
 								}
 								catch(Exception err)

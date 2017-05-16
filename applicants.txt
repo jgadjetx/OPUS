@@ -1,3 +1,3 @@
 2017-95566,Bus Driver,High School,Code 10,Male,James,Lebron,9603055465084,james,Being Evaluated
-2017-90627,Bus Driver,High School,Code 14,Male,Simba,Chips,9603055465084,roar,Being Evaluated
-2017-61218,Janitor,Matric,None,Female,Refilwe,Mogomotshi,9801180755086,ref,Being Evaluated
+2017-90627,Bus Driver,High School,Code 14,Male,Simba,Chips,9603055465084,roar,Employed
+2017-61218,Janitor,Matric,None,Female,Refilwe,Mogomotshi,9801180755086,ref,Employed
