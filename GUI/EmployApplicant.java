@@ -10,6 +10,7 @@ package GUI;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
@@ -17,9 +18,17 @@ import java.awt.Container;
 import java.awt.GridLayout;
 import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import java.awt.Color;
+
+import USERCLASSES.CommonMethods;
+import USERCLASSES.User;
 
 public class EmployApplicant extends JFrame
 {
@@ -28,17 +37,27 @@ public class EmployApplicant extends JFrame
     JLabel lblViewEmployee;
     Container pane;
     
-    int y = 10;
+    BufferedReader br,applicantBuffered;
+    BufferedWriter bw;
+    
+   
+    
+    int y = 150;
     
     public EmployApplicant()
     {
         Font heading = new Font("Play",Font.PLAIN,35);
         Font lable = new Font("Play",Font.BOLD,15);
-        Font table = new Font("Play",Font.BOLD,10);
+        Font table = new Font("Play",Font.BOLD,12);
+        
+        
+        appendDataToForm();
         
         //Table Format
-        String tableString = String.format("%-30s %-30s %-15s %-20s %-10s %-10s ","Unique ID","Job Position","Highest Qual.","Drivers Licence","Gender","Age");
-        JLabel tableHeading = new JLabel(tableString);
+        
+        String tableString = String.format("%-20s %-20s %-20s %-20s %-20s %-20s","Unique ID","Job Position","Highest Qual.","Drivers Lic","Gender","Age");
+        JLabel tableHeading = new JLabel();
+        tableHeading.setText(tableString);
         tableHeading.setFont(table);
         tableHeading.setSize(700,30);
         tableHeading.setLocation(110,105);
@@ -60,40 +79,105 @@ public class EmployApplicant extends JFrame
         panelList.setBackground(Color.DARK_GRAY);
         panelList.setLocation(100,130);
                
-        
-        //PanelContent
-        //Will be generated with for loop... This is just for demo right now
-        panelContent = new JPanel(new FlowLayout(FlowLayout.LEFT,10,10));
-        panelContent.setBackground(Color.LIGHT_GRAY);
-        btnRemove = new JButton("Hire");
-        String staffString = String.format("%-20s %-20s %-10s %-10s %-7s %-5s","2017225558","Gardener","Matric","Code 10","Male","21");
-        JLabel staff = new JLabel(staffString);
-        staff.setFont(lable);
-        panelContent.add(staff);
-        panelContent.add(btnRemove);
-        
-        JPanel panelContent2 = new JPanel(new FlowLayout(FlowLayout.LEFT,10,10));
-        panelContent2.setBackground(Color.LIGHT_GRAY);
-        btnRemove2 = new JButton("Hire");
-        String staffString2 = String.format("%-20s %-20s %-10s %-10s %-10s %-5s","2017552011","Janitor","Matric","Code 10","Male","20");
-        JLabel staff2 = new JLabel(staffString2);
-        staff2.setFont(lable);
-        panelContent2.add(staff2);
-        panelContent2.add(btnRemove2);
-      
-        
-        panelList.add(panelContent);
-        panelList.add(panelContent2);
-        
-        ////
-        
+       
         pane = getContentPane();
         pane.setLayout(null);
         pane.add(lblViewEmployee);
         pane.add(btnBack);
-        pane.add(panelList);
         pane.add(tableHeading);
         
+    }
+    
+    public void appendDataToForm()
+    {
+    	try
+    	{
+    		br = new BufferedReader(new FileReader("applicants.txt"));
+    		
+    		String line;
+    		
+    		while((line = br.readLine())!= null)
+    		{
+    			String [] info = line.split(",");
+        		
+    			String uniqueID = info[0];
+    			String jobApplied = info[1];
+    			String highQual = info[2];
+    			String driverLic = info[3];
+    			String gender = info[4];
+        		String name = info[5];
+        		String surname = info[6];
+        		String govID = info[7];
+        		String username = info[8];
+        		String status = info[9];
+        		
+        		User user = new User(name,surname,govID,username);
+        		
+    			String row = String.format("%-20s %-20s %-20s %-20s %-20s %-20s",uniqueID,jobApplied,highQual,driverLic,gender,user.getAge());
+        		
+    			JLabel text = new JLabel();
+    			text.setText(row);
+    			
+    			Font app = new Font("Play",Font.BOLD,12);
+    			
+    			text.setFont(app);
+        		text.setLocation(110, y);
+        		pane = getContentPane();
+        		text.setSize(800,30);
+        		pane.add(text);
+        		
+        		//
+        		
+        		JButton button = new JButton("Hire");
+        		button.setSize(100,20);
+        		button.setLocation(650, y);
+        		pane.add(button);
+        		button.addActionListener(new ActionListener()
+        				{
+
+							public void actionPerformed(ActionEvent e)
+							{
+
+								try
+								{
+									bw = new BufferedWriter(new FileWriter("employees.txt",true));
+										
+									bw.write(name +"," + surname +","+ jobApplied +","+ gender +","+ user.getAge() +","+ driverLic );
+									bw.newLine();
+									bw.close();
+									
+							
+									
+									Dialog die = new Dialog("Applicant "+ uniqueID + " is now an employee");
+									CommonMethods.strokeIt(die);
+									
+									
+								}
+								catch(Exception err)
+								{
+									Dialog errr = new Dialog("Error Occured...Contact Admin");
+									CommonMethods.strokeIt(errr);
+								}
+									
+							}
+								
+					
+						});
+        					
+        				
+        		
+        		y += 30;
+        		
+        		
+        		
+    		}
+    		
+    		
+    	}
+    	catch(Exception err)
+    	{
+    		JOptionPane.showMessageDialog(null,"Error Bitch");
+    	}
     }
     
     public class ButtonHandler implements ActionListener
@@ -104,6 +188,7 @@ public class EmployApplicant extends JFrame
             {
                 
             }
+            
 
         }
     }

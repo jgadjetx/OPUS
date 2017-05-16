@@ -64,5 +64,14 @@ public class CommonMethods
         obj.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         obj.setLocationRelativeTo(null);
 	}
+	
+	public static void ooh(JFrame obj)
+	{
+		obj.setSize(500,200);
+		obj.setAlwaysOnTop(true); 
+        obj.setVisible(true);
+        obj.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        obj.setLocationRelativeTo(null);
+	}
 
 }
