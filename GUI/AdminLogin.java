@@ -130,7 +130,7 @@ public class AdminLogin extends JFrame
            		
            		String line = null;
            		
-           		if((line = br.readLine())!= null)
+           		if((line = br.readLine()) != null)
            		{
            			/*dispose();
                    	ViewVacancies vac = new ViewVacancies();

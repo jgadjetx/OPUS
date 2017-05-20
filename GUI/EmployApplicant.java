@@ -69,8 +69,9 @@ public class EmployApplicant extends JFrame
         
         
         btnBack = new JButton("Back");
-        btnBack.setSize(80,30);
-        btnBack.setLocation(700,10);
+        btnBack.addActionListener(new ButtonHandler());
+        btnBack.setSize(250,30);
+        btnBack.setLocation(330,800);
         
               
         panelList = new JPanel(new GridLayout(10,1,50,20));
@@ -220,7 +221,8 @@ public class EmployApplicant extends JFrame
         {
             if (e.getSource() == btnBack)
             {
-                
+                AdminLogin admin = new AdminLogin();
+                CommonMethods.changePosition(admin);
             }
             
         }

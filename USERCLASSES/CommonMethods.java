@@ -1,6 +1,7 @@
 package USERCLASSES;
 
 import java.awt.Frame;
+import java.awt.geom.RoundRectangle2D;
 import java.io.BufferedReader;
 import java.io.FileReader;
 
@@ -51,6 +52,7 @@ public class CommonMethods
 		obj.setUndecorated(true);
 		obj.setAlwaysOnTop(true); 
         obj.setVisible(true);
+        obj.setShape(new RoundRectangle2D.Double(0, 0, 900, 900, 80, 80));
         obj.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         obj.setLocationRelativeTo(null);
         

@@ -78,7 +78,7 @@ public class AboutScreen extends JFrame
         JLabel picPj = new JLabel("");
         picPj.setIcon(pj);
         picPj.setSize(300,300);
-        picPj.setLocation(10,350);
+        picPj.setLocation(20,350);
         
         ImageIcon kea = new ImageIcon("Resources//kea.jpg");
         JLabel picKea = new JLabel("");
@@ -204,6 +204,7 @@ public class AboutScreen extends JFrame
                try
                {
                    Desktop.getDesktop().browse(new URI("https://www.linkedin.com/in/phumudzo-muvhango-1301a8117/"));
+                   setAlwaysOnTop(false);
                }
                catch(Exception err)
                {
@@ -215,6 +216,7 @@ public class AboutScreen extends JFrame
                try
                {
                    Desktop.getDesktop().browse(new URI("https://www.linkedin.com/in/keagile-konyana-89819813a/"));
+                   setAlwaysOnTop(false);
                }
                catch(Exception err)
                {
@@ -226,6 +228,7 @@ public class AboutScreen extends JFrame
                try
                {
                    Desktop.getDesktop().browse(new URI("https://github.com/jgadjetx"));
+                   setAlwaysOnTop(false);
                }
                catch(Exception err)
                {
@@ -237,6 +240,7 @@ public class AboutScreen extends JFrame
                try
                {
                    Desktop.getDesktop().browse(new URI("https://github.com/Kea-gile"));
+                   setAlwaysOnTop(false);
                }
                catch(Exception err)
                {
