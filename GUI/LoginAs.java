@@ -28,7 +28,7 @@ public class LoginAs extends JFrame
     private JButton btnLogin,btnRegister,btnViewVac,btnExit;
     private Container pane;
     
-    private BufferedReader br;
+    
     
     public LoginAs()
     {
@@ -87,11 +87,11 @@ public class LoginAs extends JFrame
             	
             	try
             	{
-            		br = new BufferedReader(new FileReader("vacancies.txt"));
+            		BufferedReader  br1 = new BufferedReader(new FileReader("vacancies.txt"));
             		
             		String line = null;
             		
-            		if((line = br.readLine())!= null)
+            		if((line = br1.readLine())!= null)
             		{
             			dispose();
             			RegistrationScreen reg = new RegistrationScreen();
@@ -104,12 +104,17 @@ public class LoginAs extends JFrame
                	   		CommonMethods.strokeIt(die);
             		}
             		
+            		br1.close();
+            		
             	}
             	catch(Exception err)
             	{
             		Dialog die = new Dialog("Error occured, please contact admin");
            	   		CommonMethods.strokeIt(die);
             	}
+            	
+            	
+            	
             	
             	
             }
@@ -119,7 +124,7 @@ public class LoginAs extends JFrame
             	
             	try
             	{
-            		br = new BufferedReader(new FileReader("vacancies.txt"));
+            		BufferedReader br = new BufferedReader(new FileReader("vacancies.txt"));
             		
             		String line = null;
             		
@@ -136,10 +141,12 @@ public class LoginAs extends JFrame
                	   		CommonMethods.strokeIt(die);
             		}
             		
+            		br.close();
             	}
             	catch(Exception err)
             	{
-            		Dialog die = new Dialog("Error occured, please contact admin");
+            		Dialog die = new Dialog("Error occured, please contact admin " + err);
+            		System.out.println(err);
            	   		CommonMethods.strokeIt(die);
             	}
             	

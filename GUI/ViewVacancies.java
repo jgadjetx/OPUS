@@ -37,7 +37,7 @@ public class ViewVacancies extends JFrame
     private JLabel text;
     
     //File Handling;
-    BufferedReader br,br2;
+    BufferedReader br;
     
     public ViewVacancies()
     {   
@@ -105,10 +105,11 @@ public class ViewVacancies extends JFrame
         		
         	}
         	
+        	br.close();
         }
         catch(Exception err)
         {
-        	Dialog die = new Dialog("Oops...An error occured");
+        	Dialog die = new Dialog("Oops...An error occured ");
         	CommonMethods.strokeIt(die);
         }
         

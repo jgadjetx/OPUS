@@ -124,8 +124,35 @@ public class AdminLogin extends JFrame
            }
            else if(e.getSource() == btnEmployees)
            {
-        	   Dialog die = new Dialog("This option will be functional soon... Hold on tight");
-        	   CommonMethods.strokeIt(die);
+        	   try
+           	{
+           		BufferedReader br = new BufferedReader(new FileReader("employees.txt"));
+           		
+           		String line = null;
+           		
+           		if((line = br.readLine())!= null)
+           		{
+           			/*dispose();
+                   	ViewVacancies vac = new ViewVacancies();
+                   	CommonMethods.changePosition(vac);*/
+           			
+           		}
+           		else
+           		{
+           			Dialog die = new Dialog("There are currently no employees");
+              	   		CommonMethods.strokeIt(die);
+           		}
+           		
+           		br.close();
+           		
+           	}
+           	catch(Exception err)
+           	{
+           		Dialog die = new Dialog("Error occured, please contact admin");
+          	   		CommonMethods.strokeIt(die);
+           	}
+        	   
+        	   
            }
            else if(e.getSource() == btnBack)
            {
