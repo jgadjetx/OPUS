@@ -141,7 +141,7 @@ public class EmployApplicant extends JFrame
 							try {
 								bw = new BufferedWriter(new FileWriter("employees.txt", true));
 
-								bw.write(uniqueID + "," + name + "," + surname + "," + jobApplied + "," + gender + ","
+								bw.write(uniqueID + "," + govID + "," + surname + "," + name + ","+ jobApplied + "," + gender + ","
 										+ user.getAge() + "," + driverLic);
 								bw.newLine();
 								bw.close();
@@ -195,12 +195,16 @@ public class EmployApplicant extends JFrame
 								Dialog errr = new Dialog("Error Occured...Contact Admin" + err);
 								CommonMethods.strokeIt(errr);
 							}
+							
+							y += 30;
 
 						}
+						
+						
 
 					});
 				}
-				y += 30;
+				
         		  		
         		
     		}
