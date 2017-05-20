@@ -21,6 +21,9 @@ import java.awt.Font;
 
 import java.awt.Container;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.awt.event.ActionEvent;
 
 public class AdminLogin extends JFrame
@@ -79,8 +82,45 @@ public class AdminLogin extends JFrame
            }
            else if(e.getSource() == btnApplicant)
            {
-        	   Dialog die = new Dialog("This option will be functional soon... Hold on tight");
-        	   CommonMethods.strokeIt(die);
+        	   try 
+        	   {
+        		   BufferedReader br = new BufferedReader(new FileReader("applicants.txt"));
+        		   
+        		   String line = null;
+        		   int count = 0;
+        		   
+        		   while( (line = br.readLine()) != null)
+        		   {
+        			   String info [] = line.split(",");
+        			   
+        			   String emp = info[9];
+        			   
+        			   if(emp.equals("Being Evaluated"))
+        			   {
+        				   count++;
+        			   }      			   
+        		   }
+        		   
+        		   br.close();
+        		   
+        		   if(count > 0)
+        		   {
+        			   EmployApplicant gui = new EmployApplicant();
+        			   CommonMethods.changePosition(gui);
+        		   }
+        		   else
+        		   {
+        			   Dialog die = new Dialog("There No Applicants At This Time");
+                	   CommonMethods.strokeIt(die);
+
+        		   }
+        		   
+        	   } 
+        	   catch (Exception err) 
+        	   {
+        		   Dialog die = new Dialog("File Error");
+            	   CommonMethods.strokeIt(die);
+        	   }
            }
            else if(e.getSource() == btnEmployees)
            {

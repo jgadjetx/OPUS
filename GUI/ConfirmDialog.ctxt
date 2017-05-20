@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=ConfirmDialog
+comment1.params=text
+comment1.target=ConfirmDialog(java.lang.String)
+comment2.params=e
+comment2.target=void\ actionPerformed(java.awt.event.ActionEvent)
+comment3.params=e
+comment3.target=void\ actionPerformed(java.awt.event.ActionEvent)
+comment4.params=
+comment4.target=java.lang.String\ getConfirm()
+numComments=5
