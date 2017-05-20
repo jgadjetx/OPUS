@@ -111,107 +111,100 @@ public class EmployApplicant extends JFrame
         		String username = info[8];
         		String status = info[9];
         		
-        		User user = new User(name,surname,govID,username);
         		
-    			String row = String.format("%-20s %-20s %-20s %-20s %-20s %-20s",uniqueID,jobApplied,highQual,driverLic,gender,user.getAge());
-        		
-    			JLabel text = new JLabel();
-    			text.setText(row);
-    			
-    			Font app = new Font("Play",Font.BOLD,12);
-    			
-    			text.setFont(app);
-        		text.setLocation(110, y);
-        		pane = getContentPane();
-        		text.setSize(800,30);
-        		pane.add(text);
         		
         		//
         		
-        		JButton button = new JButton("Hire");
-        		button.setSize(100,20);
-        		button.setLocation(650, y);
-        		pane.add(button);
-        		button.addActionListener(new ActionListener()
-        				{
+        		if (status.equals("Being Evaluated")) 
+        		{
+					User user = new User(name, surname, govID, username);
+					String row = String.format("%-20s %-20s %-20s %-20s %-20s %-20s", uniqueID, jobApplied, highQual,
+							driverLic, gender, user.getAge());
+					JLabel text = new JLabel();
+					text.setText(row);
+					Font app = new Font("Play", Font.BOLD, 12);
+					text.setFont(app);
+					text.setLocation(110, y);
+					pane = getContentPane();
+					text.setSize(800, 30);
+					pane.add(text);
+					JButton button = new JButton("Hire");
+					button.setSize(100, 20);
+					button.setLocation(650, y);
+					pane.add(button);
+					button.addActionListener(new ActionListener() 
+					{
+						public void actionPerformed(ActionEvent e) {
+							
+							button.setEnabled(false);
+							try {
+								bw = new BufferedWriter(new FileWriter("employees.txt", true));
 
-							public void actionPerformed(ActionEvent e)
-							{
+								bw.write(uniqueID + "," + name + "," + surname + "," + jobApplied + "," + gender + ","
+										+ user.getAge() + "," + driverLic);
+								bw.newLine();
+								bw.close();
 
-								try
-								{
-									bw = new BufferedWriter(new FileWriter("employees.txt",true));
-										
-									bw.write(uniqueID + ","+name +"," + surname +","+ jobApplied +","+ gender +","+ user.getAge() +","+ driverLic );
-									bw.newLine();
-									bw.close();
-									
-									//Change Status							
-									File original = new File("applicants.txt");
-									File temp = new File("tempApplicants.txt");
-									
-									BufferedReader reader = new BufferedReader(new FileReader(original));
-									BufferedWriter writer = new BufferedWriter(new FileWriter(temp));
-									
-									String line = null;
-									
-									while((line = reader.readLine()) != null)
-									{
-										String [] data = line.split(",");
-										
-										String readCode = data[0];
-										
-										if(readCode.equals(uniqueID))
-										{
-											String newLine = "Employed";
-											
-											String uniqueID = info[0];
-							    			String jobApplied = info[1];
-							    			String highQual = info[2];
-							    			String driverLic = info[3];
-							    			String gender = info[4];
-							        		String name = info[5];
-							        		String surname = info[6];
-							        		String govID = info[7];
-							        		String username = info[8];
-											
-											writer.write(uniqueID +","+ jobApplied +","+ highQual +","+ driverLic +","+ gender +","+ name +","+ surname +","+ govID +","+ username +","+ newLine);
-											writer.newLine();										
-										}
-										else
-										{
-											writer.write(line);
-											writer.newLine();
-											continue;
-										}										
-										
+								//Change Status							
+								File original = new File("applicants.txt");
+								File temp = new File("tempApplicants.txt");
+
+								BufferedReader reader = new BufferedReader(new FileReader(original));
+								BufferedWriter writer = new BufferedWriter(new FileWriter(temp));
+
+								String line = null;
+
+								while ((line = reader.readLine()) != null) {
+									String[] data = line.split(",");
+
+									String readCode = data[0];
+
+									if (readCode.equals(uniqueID)) {
+										String newLine = "Employed";
+
+										String uniqueID = info[0];
+										String jobApplied = info[1];
+										String highQual = info[2];
+										String driverLic = info[3];
+										String gender = info[4];
+										String name = info[5];
+										String surname = info[6];
+										String govID = info[7];
+										String username = info[8];
+
+										writer.write(uniqueID + "," + jobApplied + "," + highQual + "," + driverLic
+												+ "," + gender + "," + name + "," + surname + "," + govID + ","
+												+ username + "," + newLine);
+										writer.newLine();
+									} else {
+										writer.write(line);
+										writer.newLine();
+										continue;
 									}
-									
-									br.close();
-									reader.close();
-									writer.close();		
-									
-									original.delete();
-									temp.renameTo(original);
+
 								}
-								catch(Exception err)
-								{
-									Dialog errr = new Dialog("Error Occured...Contact Admin" + err);
-									CommonMethods.strokeIt(errr);
-								}
-									
+
+								br.close();
+								reader.close();
+								writer.close();
+
+								original.delete();
+								temp.renameTo(original);
+							} catch (Exception err) {
+								Dialog errr = new Dialog("Error Occured...Contact Admin" + err);
+								CommonMethods.strokeIt(errr);
 							}
-								
-					
-						});
-        					
-        				
-        		
-        		y += 30;
-        		
-        		
+
+						}
+
+					});
+				}
+				y += 30;
+        		  		
         		
     		}
+    		
+    		
     		
     		
     	}
