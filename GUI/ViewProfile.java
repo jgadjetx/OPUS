@@ -60,6 +60,12 @@ public class ViewProfile extends JFrame
         Font font = new Font("Play",Font.PLAIN,15);
         Font logged = new Font("Play",Font.BOLD,17);
         
+        //Adding logo to the window
+        ImageIcon imageLogo = new ImageIcon("Resources//good.png");
+        JLabel labelImage = new JLabel("",imageLogo,JLabel.CENTER);
+        labelImage.setSize(20,20); 
+        labelImage.setVisible(false);
+        labelImage.setLocation(420,690);
         
         //Labels
         lblUser = new JLabel("Logged in User :");
@@ -197,6 +203,7 @@ public class ViewProfile extends JFrame
         pane.add(txtID);
         pane.add(lblFirstName);
         pane.add(txtFirstName);
+        pane.add(labelImage);
         pane.add(lblSurname);
         pane.add(txtSurname);
         pane.add(lblGender);
@@ -237,7 +244,12 @@ public class ViewProfile extends JFrame
         			name = info[5];
         			surname = info[6];
         			id = info[7];
-        			status = info[9];              	
+        			status = info[9];            
+        			
+        			if (status.equals("Employed"))
+        			{
+        				labelImage.setVisible(true);
+        			}
                 	
                 	birtdate = id.substring(0,5);
                 	year = "19" + birtdate.substring(0,2)+"-";

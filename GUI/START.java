@@ -20,6 +20,5 @@ public class START
         gui.setExtendedState(JFrame.MAXIMIZED_BOTH); 
         gui.setVisible(true);
     }
-    
-    
+      
 }
