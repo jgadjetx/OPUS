@@ -27,7 +27,7 @@ public class Applicant extends JFrame
 {
     private JLabel applicantLabel, usernameLabel;
     private JTextField txtUsername;
-    private JButton btnLogin,btnBack;
+    private JButton btnLogin,btnBack,btnForgot;
     private Container pane;
     
     public Applicant()
@@ -57,9 +57,15 @@ public class Applicant extends JFrame
         btnLogin.setSize(250,30);
         btnLogin.setLocation(335,540);
         
+        btnForgot = new JButton("Forgot Username");
+        btnForgot.setSize(250,30);
+        btnForgot.setLocation(335,580);
+        btnForgot.addActionListener(new ButtonHandler());
+        
+        
         btnBack = new JButton("Back");
         btnBack.setSize(250,30);
-        btnBack.setLocation(335,580);
+        btnBack.setLocation(335,620);
         btnBack.addActionListener(new ButtonHandler());
         
         this.getRootPane().setDefaultButton(btnLogin);
@@ -69,6 +75,7 @@ public class Applicant extends JFrame
         pane.setLayout(null);
         pane.add(labelImage);
         pane.add(btnBack);
+        pane.add(btnForgot);
         pane.add(usernameLabel);
         pane.add(txtUsername);
         pane.add(btnLogin);
@@ -98,6 +105,12 @@ public class Applicant extends JFrame
             	   txtUsername.setText(null);
             	   
                }          		   
+           }
+           else if(e.getSource() == btnForgot)
+           {
+        	   dispose();
+        	   ForgotUsername admin = new ForgotUsername();
+        	   CommonMethods.changePosition(admin);
            }
            else if(e.getSource() == btnBack)
            {
