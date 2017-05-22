@@ -138,6 +138,9 @@ public class EmployApplicant extends JFrame
 						public void actionPerformed(ActionEvent e) {
 							
 							button.setEnabled(false);
+							Dialog die = new Dialog("Applicant " + uniqueID + "Has been employed");
+							CommonMethods.strokeIt(die);
+							
 							try {
 								bw = new BufferedWriter(new FileWriter("employees.txt", true));
 

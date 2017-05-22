@@ -8,7 +8,7 @@ package GUI;
  * @version (a version number or a date)
  */
 
-import javax.swing.JFrame;
+import javax.swing.JFrame; 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
@@ -124,17 +124,17 @@ public class AdminLogin extends JFrame
            }
            else if(e.getSource() == btnEmployees)
            {
-        	   try
+            try
            	{
            		BufferedReader br = new BufferedReader(new FileReader("employees.txt"));
            		
            		String line = null;
            		
-           		if((line = br.readLine()) != null)
-           		{
-           			/*dispose();
-                   	ViewVacancies vac = new ViewVacancies();
-                   	CommonMethods.changePosition(vac);*/
+           		if((line = br.readLine()) != null){
+           		
+           			dispose();
+                   	ViewEmployees vac = new ViewEmployees();
+                   	CommonMethods.changePosition(vac);
            			
            		}
            		else

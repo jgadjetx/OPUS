@@ -38,6 +38,7 @@ public class ForgotUsername extends JFrame
 		btnFind.setSize(250,30);
 		btnFind.setLocation(350,650);
 		btnFind.addActionListener(new ButtonHandler());
+		this.getRootPane().setDefaultButton(btnFind);
 		
 		btnLogin = new JButton("Login");
 		btnLogin.setEnabled(false);
