@@ -10,7 +10,7 @@ package USERCLASSES;
 
 import java.util.Calendar;
 
-public class User implements Accountable
+public abstract class User implements Accountable
 {
     private String name;
     private String surname;

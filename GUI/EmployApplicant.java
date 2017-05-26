@@ -28,6 +28,7 @@ import java.awt.Font;
 import java.awt.Color;
 
 import USERCLASSES.CommonMethods;
+import USERCLASSES.Employee;
 import USERCLASSES.User;
 
 public class EmployApplicant extends JFrame
@@ -118,8 +119,8 @@ public class EmployApplicant extends JFrame
         		
         		if (status.equals("Being Evaluated")) 
         		{
-					User user = new User(name, surname, govID, username);
-					String row = String.format("%-20s %-20s %-20s %-20s %-20s %-20s", uniqueID, jobApplied, highQual,
+        			Employee user = new Employee(name,surname,govID,username); 
+        			String row = String.format("%-20s %-20s %-20s %-20s %-20s %-20s", uniqueID, jobApplied, highQual,
 							driverLic, gender, user.getAge());
 					JLabel text = new JLabel();
 					text.setText(row);

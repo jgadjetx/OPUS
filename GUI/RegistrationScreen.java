@@ -286,7 +286,7 @@ public class RegistrationScreen extends JFrame
             }
             else if (e.getSource() == btnRegister)
             {
-                //Validation        	 
+                     	 
             	
 					try {
 						int genderNum = Integer.valueOf(txtGovID.getText().substring(6,7));
@@ -304,63 +304,95 @@ public class RegistrationScreen extends JFrame
 						
 						CommonMethods common = new CommonMethods();
 						
+						//------------------------Validation-----------------------//
+						
 						if(common.usernameExists(txtUsername.getText()))
 						{
 							JOptionPane.showMessageDialog(null,"Username "+ txtUsername.getText() + " already exist, choose another one");
 							txtUsername.setText("");
-						}
-						else if(txtName.getText().length() < 1 ||  txtSurname.getText().length() < 1 ||  comboGender.getSelectedItem() == null || txtGovID.getText().length() < 1 || comboQual.getSelectedItem() == null || comboDrivers.getSelectedItem() == null ||  txtUsername.getText().length() < 1 || comboJob.getSelectedItem() == null)
-						{
-							JOptionPane.showMessageDialog(null,"Cannot append null field... Try again");
 							
-							if (genderNum >= 0 && genderNum <= 4 )
+							if(txtName.getText().length() < 1 ||  txtSurname.getText().length() < 1 ||  comboGender.getSelectedItem() == null || txtGovID.getText().length() < 1 || comboQual.getSelectedItem() == null || comboDrivers.getSelectedItem() == null ||  txtUsername.getText().length() < 1 || comboJob.getSelectedItem() == null)
 							{
-								if(!(comboGender.getSelectedItem().toString().equals("Female")))
-								{
-									JOptionPane.showMessageDialog(null,"Invalid ID number/gender combination... Try again");
-									comboGender.setSelectedIndex(-1);
-									txtGovID.setText("");							
-								}
+								JOptionPane.showMessageDialog(null,"Cannot append null field... Try again");
 							}
-							else if(genderNum >= 5 && genderNum <= 9)
-							{
-								if(!(comboGender.getSelectedItem().toString().equals("Male")))
-								{
-									JOptionPane.showMessageDialog(null,"Invalid ID number/gender combination... Try again");
-									comboGender.setSelectedIndex(-1);
-									txtGovID.setText("");							
-								}
-							}  
-							else if(txtGovID.getText().length() != 13 )
-							{
-								JOptionPane.showMessageDialog(null,"Invalid ID number length... Try again");
-								txtGovID.setText("");
-																
-							}	
 							else
 							{
-								if(!(year.equals(selectedYear)))
+								if (genderNum >= 0 && genderNum <= 4 )
 								{
-									JOptionPane.showMessageDialog(null,"ID birth year and selected birth year don't match... Try again");
-									txtGovID.setText("");
-									datePicker.getJFormattedTextField().setText("");
+									JOptionPane.showMessageDialog(null,"Invalid ID number/gender combination... Try again");
+									comboGender.setSelectedIndex(-1);
+									txtGovID.setText("");	
 									
 								}
-								else if(!(month.equals(selectedMonth)))
+								else
 								{
-									JOptionPane.showMessageDialog(null,"ID birth month and selected birth month don't match... Try again");
-									txtGovID.setText("");
-									datePicker.getJFormattedTextField().setText("");
+									if(!(comboGender.getSelectedItem().toString().equals("Female")))
+									{
+										JOptionPane.showMessageDialog(null,"Invalid ID number/gender combination... Try again");
+										comboGender.setSelectedIndex(-1);
+										txtGovID.setText("");					
+									}
+									else
+									{
+										if(genderNum >= 5 && genderNum <= 9)
+										{
+											JOptionPane.showMessageDialog(null,"Invalid ID number/gender combination... Try again");
+											comboGender.setSelectedIndex(-1);
+											txtGovID.setText("");
+										}
+										else
+										{
+											if(!(comboGender.getSelectedItem().toString().equals("Male")))
+											{
+												JOptionPane.showMessageDialog(null,"Invalid ID number/gender combination... Try again");
+												comboGender.setSelectedIndex(-1);
+												txtGovID.setText("");
+											}
+											else
+											{
+												if(txtGovID.getText().length() != 13 )
+												{
+													JOptionPane.showMessageDialog(null,"Invalid ID number length... Try again");
+													txtGovID.setText("");
+												}
+												else
+												{
+													if(!(year.equals(selectedYear)))
+													{
+														JOptionPane.showMessageDialog(null,"ID birth year and selected birth year don't match... Try again");
+														txtGovID.setText("");
+														datePicker.getJFormattedTextField().setText("");
+														
+													}
+													else
+													{
+														if(!(month.equals(selectedMonth)))
+														{
+															JOptionPane.showMessageDialog(null,"ID birth month and selected birth month don't match... Try again");
+															txtGovID.setText("");
+															datePicker.getJFormattedTextField().setText("");
+														}
+														else
+														{
+															if(!(day.equals(selectedDay)))
+															{
+																JOptionPane.showMessageDialog(null,"ID birth day and selected birth day don't match... Try again");
+																txtGovID.setText("");
+																datePicker.getJFormattedTextField().setText("");
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+									
 								}
-								else if(!(day.equals(selectedDay)))
-								{
-									JOptionPane.showMessageDialog(null,"ID birth day and selected birth day don't match... Try again");
-									txtGovID.setText("");
-									datePicker.getJFormattedTextField().setText("");
-								}
-								
 								
 							}
+						
+							
+						//------------------------Validation-----------------------//
 						}					
 						else
 						{
@@ -385,7 +417,8 @@ public class RegistrationScreen extends JFrame
 							comboGender.setSelectedIndex(-1);
 							comboJob.setSelectedIndex(-1);
 							datePicker.getJFormattedTextField().setText("");
-						}				
+						}			
+						
 											
 					}
 					catch (Exception e1) 
