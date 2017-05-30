@@ -30,7 +30,7 @@ public class AboutScreen extends JFrame
 {
     private JLabel txtAbout,txtDescription,txtMeet,pjImage,keaImage,pjName,keaName,txtPjRoles,txtKeaRoles;
     private JLabel pjLinkedIn,pjGit,pjEmail,keaLinkedIn,keaGit,keaEmail;
-    private JLabel linkPjLinked,linkKeaLinked,linkPjGit,linkKeaGit,linkPjEmail,linkKeaEmail;
+    private JLabel linkPjLinked,linkKeaLinked,linkPjGit,linkKeaGit,linkPjEmail,linkKeaEmail,website;
     private JButton btnClose;
     private ImageIcon imagePj,imageKea,ImagepjLinkedIn,ImagepjGit,ImagepjEmail,ImagekeaLinkedIn,ImagekeaGit,ImagekeaEmail;
     private Container pane;
@@ -92,13 +92,13 @@ public class AboutScreen extends JFrame
         ImageIcon pjIcon = new ImageIcon("Resources//logosComb2.png");
         JLabel pjLogo = new JLabel("");
         pjLogo.setIcon(pjIcon);
-        pjLogo.setSize(40,100);
+        pjLogo.setSize(40,150);
         pjLogo.setLocation(10,740);
         
-        ImageIcon keaIcon = new ImageIcon("Resources//logosComb2.png");
+        ImageIcon keaIcon = new ImageIcon("Resources//logosComb.png");
         JLabel keaLogo = new JLabel("");
         keaLogo.setIcon(keaIcon);
-        keaLogo.setSize(40,100);
+        keaLogo.setSize(40,150);
         keaLogo.setLocation(560,740);
         
 
@@ -151,7 +151,7 @@ public class AboutScreen extends JFrame
         linkPjGit.setCursor(new Cursor(Cursor.HAND_CURSOR));
         linkPjGit.addMouseListener(new  MouseHandler());
         linkPjGit.setSize(60,30);
-        linkPjGit.setLocation(50,772);
+        linkPjGit.setLocation(50,778);
         
         linkKeaGit = new JLabel("<html> <a href=\"\">github</a> </html>");
         linkKeaGit.setCursor(new Cursor(Cursor.HAND_CURSOR));
@@ -161,11 +161,17 @@ public class AboutScreen extends JFrame
         
         linkPjEmail = new JLabel("getintouch@phumudzo.co.za");
         linkPjEmail.setSize(200,30);
-        linkPjEmail.setLocation(50,805);
+        linkPjEmail.setLocation(50,810);
         
         linkKeaEmail = new JLabel("ekkonyana@gmail.com");
         linkKeaEmail.setSize(150,30);
         linkKeaEmail.setLocation(600,805);
+        
+        website = new JLabel("<html> <a href=\"\">phumudzo.co.za</a> </html>");
+        website.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        website.addMouseListener(new  MouseHandler());
+        website.setSize(150,30);
+        website.setLocation(50,850);
         
         
         
@@ -191,15 +197,28 @@ public class AboutScreen extends JFrame
         pane.add(linkKeaGit);
         pane.add(linkPjEmail);
         pane.add(linkKeaEmail);
-        
+        pane.add(linkKeaEmail);
+        pane.add(website);
 
     }
     
     public class MouseHandler implements MouseListener
    {
        public void mouseClicked(MouseEvent e)
-       {           
-           if(e.getSource() == linkPjLinked)
+       {  
+    	   if(e.getSource() == website)
+           {
+               try
+               {
+                   Desktop.getDesktop().browse(new URI("https://www.phumudzo.co.za"));
+                   setAlwaysOnTop(false);
+               }
+               catch(Exception err)
+               {
+                   System.out.println("Link Error : " + err);
+               }
+           }
+    	   else if(e.getSource() == linkPjLinked)
            {
                try
                {

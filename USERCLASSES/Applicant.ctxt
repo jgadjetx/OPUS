@@ -1,9 +1,15 @@
 #BlueJ class context
 comment0.target=Applicant
-comment1.params=name\ surname\ govID\ race\ username\ highQual\ driverLic\ jobApplied
+comment1.params=name\ surname\ govID\ username\ highQual\ driverLic\ jobApplied\ status
 comment1.target=Applicant(java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String)
 comment2.params=
 comment2.target=java.lang.String\ getUniqueCode()
 comment3.params=
-comment3.target=void\ writeToFile()
-numComments=4
+comment3.target=java.lang.String\ getJobApplied()
+comment4.params=
+comment4.target=java.lang.String\ getHighestQual()
+comment5.params=
+comment5.target=java.lang.String\ getDriverLic()
+comment6.params=
+comment6.target=java.lang.String\ getStatus()
+numComments=7

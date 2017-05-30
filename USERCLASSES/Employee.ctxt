@@ -1,0 +1,5 @@
+#BlueJ class context
+comment0.target=Employee
+comment1.params=name\ surname\ govID\ username
+comment1.target=Employee(java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String)
+numComments=2
