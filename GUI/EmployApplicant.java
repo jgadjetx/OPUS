@@ -119,6 +119,7 @@ public class EmployApplicant extends JFrame
         		
         		if (status.equals("Being Evaluated")) 
         		{
+        			
         			Employee user = new Employee(name,surname,govID,username); 
         			String row = String.format("%-20s %-20s %-20s %-20s %-20s %-20s", uniqueID, jobApplied, highQual,
 							driverLic, gender, user.getAge());
@@ -200,13 +201,16 @@ public class EmployApplicant extends JFrame
 								CommonMethods.strokeIt(errr);
 							}
 							
-							y += 30;
+							
 
+							
 						}
 						
 						
-
-					});
+						
+				 	});
+					
+					y += 30;
 				}
 				
         		  		

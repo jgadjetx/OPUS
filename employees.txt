@@ -1,1 +1,2 @@
-2017-36799,9612315092083,Khalid,Asah,Taxi Driver,Male,21,Code 10
+2017-26193,9403245270082,Moloko,Justine,Janitor,Male,23,Code 02
+2017-61218,9801180755086,Mogomotshi,Refilwe,Janitor,Female,19,None

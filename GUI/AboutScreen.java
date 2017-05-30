@@ -165,7 +165,7 @@ public class AboutScreen extends JFrame
         
         linkKeaEmail = new JLabel("ekkonyana@gmail.com");
         linkKeaEmail.setSize(150,30);
-        linkKeaEmail.setLocation(600,805);
+        linkKeaEmail.setLocation(600,810);
         
         website = new JLabel("<html> <a href=\"\">phumudzo.co.za</a> </html>");
         website.setCursor(new Cursor(Cursor.HAND_CURSOR));

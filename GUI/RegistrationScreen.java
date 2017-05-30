@@ -288,7 +288,8 @@ public class RegistrationScreen extends JFrame
             {
                      	 
             	
-					try {
+					try 
+					{
 						int genderNum = Integer.valueOf(txtGovID.getText().substring(6,7));
 						
 						String year = txtGovID.getText().substring(0,2);;
@@ -298,9 +299,9 @@ public class RegistrationScreen extends JFrame
 						String selectedDOB = datePicker.getJFormattedTextField().getText();
 						String [] info = selectedDOB.split("-");
 						
-						String selectedYear = info[0].substring(2,4);
-						String selectedMonth = info[1];
-						String selectedDay = info[2];
+						String selectedYear = datePicker.getJFormattedTextField().getText().substring(2,4);
+						String selectedMonth = datePicker.getJFormattedTextField().getText().substring(5,7);
+						String selectedDay = datePicker.getJFormattedTextField().getText().substring(8,10);
 						
 						CommonMethods common = new CommonMethods();
 						
@@ -308,92 +309,54 @@ public class RegistrationScreen extends JFrame
 						
 						if(common.usernameExists(txtUsername.getText()))
 						{
-							JOptionPane.showMessageDialog(null,"Username "+ txtUsername.getText() + " already exist, choose another one");
 							txtUsername.setText("");
+							Dialog die = new Dialog("Username "+ txtUsername.getText() + " already exist, choose another one");
+							common.strokeIt(die);
+
+						}	
+						else if (txtName.getText().length() < 2 ||  txtSurname.getText().length() < 2 ||  comboGender.getSelectedItem() == null || txtGovID.getText().length() < 1 || comboQual.getSelectedItem() == null || comboDrivers.getSelectedItem() == null ||  txtUsername.getText().length() < 1 || comboJob.getSelectedItem() == null)					
+						{
 							
-							if(txtName.getText().length() < 1 ||  txtSurname.getText().length() < 1 ||  comboGender.getSelectedItem() == null || txtGovID.getText().length() < 1 || comboQual.getSelectedItem() == null || comboDrivers.getSelectedItem() == null ||  txtUsername.getText().length() < 1 || comboJob.getSelectedItem() == null)
-							{
-								JOptionPane.showMessageDialog(null,"Cannot append null field... Try again");
-							}
-							else
-							{
-								if (genderNum >= 0 && genderNum <= 4 )
-								{
-									JOptionPane.showMessageDialog(null,"Invalid ID number/gender combination... Try again");
-									comboGender.setSelectedIndex(-1);
-									txtGovID.setText("");	
-									
-								}
-								else
-								{
-									if(!(comboGender.getSelectedItem().toString().equals("Female")))
-									{
-										JOptionPane.showMessageDialog(null,"Invalid ID number/gender combination... Try again");
-										comboGender.setSelectedIndex(-1);
-										txtGovID.setText("");					
-									}
-									else
-									{
-										if(genderNum >= 5 && genderNum <= 9)
-										{
-											JOptionPane.showMessageDialog(null,"Invalid ID number/gender combination... Try again");
-											comboGender.setSelectedIndex(-1);
-											txtGovID.setText("");
-										}
-										else
-										{
-											if(!(comboGender.getSelectedItem().toString().equals("Male")))
-											{
-												JOptionPane.showMessageDialog(null,"Invalid ID number/gender combination... Try again");
-												comboGender.setSelectedIndex(-1);
-												txtGovID.setText("");
-											}
-											else
-											{
-												if(txtGovID.getText().length() != 13 )
-												{
-													JOptionPane.showMessageDialog(null,"Invalid ID number length... Try again");
-													txtGovID.setText("");
-												}
-												else
-												{
-													if(!(year.equals(selectedYear)))
-													{
-														JOptionPane.showMessageDialog(null,"ID birth year and selected birth year don't match... Try again");
-														txtGovID.setText("");
-														datePicker.getJFormattedTextField().setText("");
-														
-													}
-													else
-													{
-														if(!(month.equals(selectedMonth)))
-														{
-															JOptionPane.showMessageDialog(null,"ID birth month and selected birth month don't match... Try again");
-															txtGovID.setText("");
-															datePicker.getJFormattedTextField().setText("");
-														}
-														else
-														{
-															if(!(day.equals(selectedDay)))
-															{
-																JOptionPane.showMessageDialog(null,"ID birth day and selected birth day don't match... Try again");
-																txtGovID.setText("");
-																datePicker.getJFormattedTextField().setText("");
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-									
-								}
-								
-							}
-						
+							Dialog nulli = new Dialog("Can't append null values, fill to continue");
+							common.strokeIt(nulli);
 							
-						//------------------------Validation-----------------------//
-						}					
+						}
+						else if(genderNum >= 0 && genderNum <= 4 && comboGender.getSelectedItem().toString().equals("Male"))
+						{
+							Dialog gen1 = new Dialog("Incorret Gender/ID Number Selection");
+							comboGender.setSelectedIndex(-1);
+							common.strokeIt(gen1);
+						}
+						else if(genderNum >= 5 && genderNum <= 9 && comboGender.getSelectedItem().toString().equals("Female"))
+						{
+							Dialog gen2 = new Dialog("Incorret Gender/ID Number Selection");
+							comboGender.setSelectedIndex(-1);
+							common.strokeIt(gen2);
+						}
+						else if(txtGovID.getText().length() != 13)
+						{
+							Dialog id = new Dialog("Invalid ID Number");
+							txtGovID.setText("");
+							common.strokeIt(id);
+						}
+						else if(!(year.equals(selectedYear)))
+						{
+							Dialog id2 = new Dialog("ID birth year and selected birth year don't match");
+							datePicker.getJFormattedTextField().setText("");
+							common.strokeIt(id2);
+						}
+						else if(!(month.equals(selectedMonth)))
+						{
+							Dialog id3 = new Dialog("ID birth month and selected birth month don't match");
+							datePicker.getJFormattedTextField().setText("");
+							common.strokeIt(id3);
+						}
+						else if(!(day.equals(selectedDay)))
+						{
+							Dialog id4 = new Dialog("ID birth day and selected birth day don't match");
+							datePicker.getJFormattedTextField().setText("");
+							common.strokeIt(id4);
+						}
 						else
 						{
 							//Write to file
@@ -423,7 +386,7 @@ public class RegistrationScreen extends JFrame
 					}
 					catch (Exception e1) 
 					{
-						Dialog die = new Dialog("Oops...An error occured");
+						Dialog die = new Dialog("Oops...An error occured " );
 			        	CommonMethods.strokeIt(die);
 					}         	         	
             }
