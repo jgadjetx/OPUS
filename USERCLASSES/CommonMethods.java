@@ -66,7 +66,7 @@ public class CommonMethods
 	
 	public static void strokeIt(JFrame obj)
 	{
-		obj.setSize(300,200);
+		obj.setSize(350,200);
 		obj.setAlwaysOnTop(true); 
         obj.setVisible(true);
         obj.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
